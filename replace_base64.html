@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>base64 → URL 書き換えツール</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@700;800&family=DM+Sans:wght@400;500&display=swap');
+
+  :root {
+    --bg: #0e0e0e;
+    --surface: #1a1a1a;
+    --border: #2e2e2e;
+    --accent: #e8ff5a;
+    --accent2: #5affcd;
+    --text: #f0f0f0;
+    --muted: #666;
+    --danger: #ff5a5a;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+    padding: 48px 24px;
+  }
+
+  .wrap { max-width: 720px; margin: 0 auto; }
+
+  h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(24px, 4vw, 40px);
+    font-weight: 800;
+    letter-spacing: -1px;
+    margin-bottom: 8px;
+  }
+  h1 span { color: var(--accent); }
+
+  .subtitle {
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    margin-bottom: 40px;
+  }
+
+  .section {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+    margin-bottom: 20px;
+  }
+
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+
+  label {
+    display: block;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+
+  input[type="text"] {
+    width: 100%;
+    background: #111;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 14px;
+    color: var(--text);
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    outline: none;
+    transition: border-color 0.2s;
+    margin-bottom: 14px;
+  }
+
+  input[type="text"]:focus { border-color: var(--accent2); }
+
+  .preview-url {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--accent2);
+    background: #111;
+    padding: 8px 12px;
+    border-radius: 6px;
+    word-break: break-all;
+    margin-top: -8px;
+    margin-bottom: 14px;
+  }
+
+  .drop-zone {
+    border: 2px dashed var(--border);
+    border-radius: 12px;
+    padding: 40px 24px;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .drop-zone:hover, .drop-zone.drag-over {
+    border-color: var(--accent);
+    background: rgba(232,255,90,0.03);
+  }
+
+  .drop-label {
+    font-family: 'Syne', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+
+  .drop-sub {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  #file-input { display: none; }
+
+  .status-msg {
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    padding: 12px 16px;
+    border-radius: 8px;
+    background: var(--surface);
+    border-left: 3px solid var(--accent2);
+    color: var(--accent2);
+    margin-bottom: 20px;
+    display: none;
+  }
+  .status-msg.error { border-left-color: var(--danger); color: var(--danger); }
+  .status-msg.visible { display: block; }
+
+  .btn {
+    background: var(--accent);
+    color: #0e0e0e;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 28px;
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: opacity 0.15s;
+    width: 100%;
+  }
+  .btn:hover { opacity: 0.85; }
+  .btn:disabled { opacity: 0.3; cursor: not-allowed; }
+
+  .result-section {
+    display: none;
+    margin-top: 20px;
+  }
+  .result-section.visible { display: block; }
+
+  .result-info {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--accent2);
+    margin-bottom: 16px;
+    padding: 10px 14px;
+    background: rgba(90,255,205,0.05);
+    border-radius: 8px;
+    border: 1px solid rgba(90,255,205,0.15);
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>base64 <span>→</span> URL<br>書き換えツール</h1>
+  <p class="subtitle">HTMLのbase64画像をGitHub Raw URLに置換して新しいHTMLを出力する</p>
+
+  <!-- Step 1: リポジトリ設定 -->
+  <div class="section">
+    <div class="section-title">Step 1 — GitHub リポジトリ情報</div>
+
+    <label>GitHubユーザー名</label>
+    <input type="text" id="gh-user" value="kazuyukikonuma" placeholder="kazuyukikonuma">
+
+    <label>リポジトリ名</label>
+    <input type="text" id="gh-repo" value="260424for-japanese-colleague" placeholder="260424for-japanese-colleague">
+
+    <label>ブランチ名</label>
+    <input type="text" id="gh-branch" value="main" placeholder="main">
+
+    <label>画像フォルダ（ルート直下の場合は空欄）</label>
+    <input type="text" id="gh-folder" value="" placeholder="images または空欄">
+
+    <label style="margin-top:4px">生成されるURLプレビュー（image_001.jpg の場合）</label>
+    <div class="preview-url" id="url-preview">https://raw.githubusercontent.com/kazuyukikonuma/260424for-japanese-colleague/main/image_001.jpg</div>
+  </div>
+
+  <!-- Step 2: HTMLファイル読み込み -->
+  <div class="section">
+    <div class="section-title">Step 2 — 元のHTMLファイルをドロップ</div>
+    <div class="drop-zone" id="drop-zone">
+      <div class="drop-label">📄 HTMLファイルをここにドロップ</div>
+      <div class="drop-sub">またはクリックして選択</div>
+      <input type="file" id="file-input" accept=".html,.htm">
+    </div>
+  </div>
+
+  <div class="status-msg" id="status-msg"></div>
+
+  <!-- Step 3: 変換 -->
+  <button class="btn" id="btn-convert" disabled>🔄 書き換えて新しいHTMLをダウンロード</button>
+
+  <div class="result-section" id="result-section">
+    <div class="result-info" id="result-info"></div>
+  </div>
+
+</div>
+
+<script>
+  let htmlContent = '';
+  let originalFileName = 'output.html';
+
+  // URLプレビュー更新
+  function updatePreview() {
+    const user = document.getElementById('gh-user').value.trim() || 'USER';
+    const repo = document.getElementById('gh-repo').value.trim() || 'REPO';
+    const branch = document.getElementById('gh-branch').value.trim() || 'main';
+    const folder = document.getElementById('gh-folder').value.trim();
+    const path = folder ? `${folder}/image_001.jpg` : 'image_001.jpg';
+    document.getElementById('url-preview').textContent =
+      `https://raw.githubusercontent.com/${user}/${repo}/${branch}/${path}`;
+  }
+
+  ['gh-user','gh-repo','gh-branch','gh-folder'].forEach(id => {
+    document.getElementById(id).addEventListener('input', updatePreview);
+  });
+
+  // ファイルドロップ
+  const dropZone = document.getElementById('drop-zone');
+  const fileInput = document.getElementById('file-input');
+
+  dropZone.addEventListener('click', () => fileInput.click());
+  fileInput.addEventListener('change', e => {
+    if (e.target.files[0]) loadFile(e.target.files[0]);
+  });
+  dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('drag-over'); });
+  dropZone.addEventListener('dragleave', () => dropZone.classList.remove('drag-over'));
+  dropZone.addEventListener('drop', e => {
+    e.preventDefault();
+    dropZone.classList.remove('drag-over');
+    if (e.dataTransfer.files[0]) loadFile(e.dataTransfer.files[0]);
+  });
+
+  function loadFile(file) {
+    originalFileName = file.name.replace(/\.html?$/i, '') + '_replaced.html';
+    showStatus('読み込み中...');
+    const reader = new FileReader();
+    reader.onload = e => {
+      htmlContent = e.target.result;
+      // base64画像数を数える
+      const matches = htmlContent.match(/data:image\/[a-zA-Z+]+;base64,[A-Za-z0-9+/=]+/g);
+      const count = matches ? matches.length : 0;
+      if (count === 0) {
+        showStatus('base64画像が見つかりませんでした。', true);
+        document.getElementById('btn-convert').disabled = true;
+      } else {
+        showStatus(`✓ ${count} 枚の画像を検出。下のボタンで書き換え開始。`);
+        document.getElementById('btn-convert').disabled = false;
+      }
+    };
+    reader.readAsText(file, 'UTF-8');
+  }
+
+  function showStatus(msg, isError = false) {
+    const el = document.getElementById('status-msg');
+    el.textContent = msg;
+    el.className = 'status-msg visible' + (isError ? ' error' : '');
+  }
+
+  // 変換処理
+  document.getElementById('btn-convert').addEventListener('click', () => {
+    const user = document.getElementById('gh-user').value.trim();
+    const repo = document.getElementById('gh-repo').value.trim();
+    const branch = document.getElementById('gh-branch').value.trim() || 'main';
+    const folder = document.getElementById('gh-folder').value.trim();
+
+    if (!user || !repo) {
+      showStatus('ユーザー名とリポジトリ名を入力してください。', true);
+      return;
+    }
+
+    let counter = 0;
+    const replaced = htmlContent.replace(
+      /data:(image\/[a-zA-Z+]+);base64,[A-Za-z0-9+/=]+/g,
+      (match, mime) => {
+        const ext = mimeToExt(mime);
+        const filename = `image_${String(counter + 1).padStart(3, '0')}.${ext}`;
+        const path = folder ? `${folder}/${filename}` : filename;
+        const url = `https://raw.githubusercontent.com/${user}/${repo}/${branch}/${path}`;
+        counter++;
+        return url;
+      }
+    );
+
+    // ダウンロード
+    const blob = new Blob([replaced], { type: 'text/html;charset=utf-8' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = originalFileName;
+    a.click();
+
+    showStatus(`✓ ${counter} 枚を置換しました。「${originalFileName}」をダウンロードしました。`);
+
+    document.getElementById('result-section').classList.add('visible');
+    document.getElementById('result-info').textContent =
+      `次のステップ：このHTMLファイルを同じGitHubリポジトリにアップロードしてください。` +
+      `Netlifyデプロイ後にブラウザで確認できます。`;
+  });
+
+  function mimeToExt(mime) {
+    const map = { 'image/jpeg':'jpg','image/jpg':'jpg','image/png':'png',
+                  'image/gif':'gif','image/webp':'webp','image/svg+xml':'svg' };
+    return map[mime] || 'jpg';
+  }
+</script>
+</body>
+</html>

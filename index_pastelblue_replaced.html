@@ -1,0 +1,1817 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FY25 事業実績 説明資料</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap');
+
+:root {
+  /* Pastel Blue テーマ v1.0 — 2026年4月制定 */
+  --m-pink:   #EEF4FF; --m-pink-d:  #2A4A7A;
+  --m-lav:    #EEF4FF; --m-lav-d:   #2A4A7A;
+  --m-mint:   #EEF4FF; --m-mint-d:  #2A4A7A;
+  --m-sky:    #EEF4FF; --m-sky-d:   #2A4A7A;
+  --m-lemon:  #EEF4FF; --m-lemon-d: #2A4A7A;
+  --m-peach:  #EEF4FF; --m-peach-d: #2A4A7A;
+  --ink:      #1A1A1A;
+  --ink-sub:  #666666;
+  --rule:     #C8D8EE;
+  --mono:     'Noto Sans JP', sans-serif;
+  /* アクセントカラー（グラフ専用） */
+  --ac-blue:  #4A7CC7;
+  --ac-coral: #7AAEE0;
+  --ac-mint:  #6AB08A;
+  --ac-lav:   #8B9ED4;
+  --ac-rose:  #E07070;
+  --ac-lemon: #F0C050;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{background:#F4F8FF;color:var(--ink);font-family:'Noto Sans JP',sans-serif;font-size:16px;line-height:1.8;}
+
+.page{max-width:1200px;margin:0 auto;padding:56px 48px;border-bottom:1px solid #C8D8EE;}
+.page:last-child{border-bottom:none;}
+
+/* COVER */
+.cover-tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;background:#E8F0FF;color:#4A7CC7;padding:4px 14px;border-radius:4px;margin-bottom:28px;}
+.cover-title{font-size:42px;font-weight:900;line-height:1.1;letter-spacing:-.02em;margin-bottom:16px;}
+.cover-lead{font-size:19px;color:var(--ink-sub);font-weight:300;margin-bottom:32px;max-width:720px;}
+.cover-meta{font-size:14px;color:var(--ink-sub);letter-spacing:.05em;}
+
+/* STORY NAV */
+.story-nav{display:flex;gap:0;margin-top:36px;border:1.5px solid #C8D8EE;border-radius:10px;overflow:hidden;}
+.s-step{flex:1;padding:14px 16px;border-right:1.5px solid var(--rule);font-size:11px;line-height:1.5;}
+.s-step:last-child{border-right:none;}
+.s-num{font-size:20px;font-weight:800;line-height:1;margin-bottom:4px;}
+.s-lbl{font-weight:700;font-size:14px;}
+.s-dsc{color:var(--ink-sub);font-size:13px;}
+.why{background:#fafafa;} .but{background:#fafafa;} .thr{background:#fafafa;}
+
+/* SEC TAG */
+.sec-tag{display:inline-flex;align-items:center;gap:8px;padding:6px 16px 6px 6px;border-radius:4px;font-size:22px;font-weight:700;letter-spacing:.02em;margin-bottom:20px;background:#E8F0FF;color:#2A4A7A;}
+.sec-num{width:24px;height:24px;border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:900;}
+
+/* KEY MESSAGE */
+.keymsg{margin-bottom:28px;padding:28px 32px;border-radius:12px;background:#E8F0FF;border-left:4px solid #4A7CC7;}
+.keymsg-eye{font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;margin-bottom:10px;opacity:.65;}
+.keymsg-txt{font-size:34px;font-weight:800;line-height:1.3;letter-spacing:-.01em;}
+.keymsg-sub{font-size:17px;margin-top:10px;opacity:.75;line-height:1.65;}
+
+/* GRID */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;min-width:0;}
+.g3>*{min-width:0;}
+
+/* CARD */
+.card{background:#FFFFFF;border:1.5px solid #C8D8EE;border-radius:10px;padding:24px 28px;}
+.ctitle{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-sub);margin-bottom:18px;}
+
+/* KPI */
+.kpi-strip{display:flex;gap:12px;margin-bottom:20px;}
+.kpi-box{flex:1;padding:18px 20px;border-radius:10px;border:1.5px solid transparent;}
+.kpi-lbl{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:6px;}
+.kpi-val{font-size:36px;font-weight:800;line-height:1;margin-bottom:4px;}
+.kpi-nte{font-size:14px;opacity:.65;}
+.kpi-delta{display:inline-block;font-size:13px;font-weight:700;padding:2px 8px;border-radius:10px;margin-top:6px;}
+
+/* HH SPLIT */
+.hh-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px;}
+.hh-inner{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;}
+
+/* TABLE */
+.dt{width:100%;border-collapse:collapse;font-size:15px;}
+.dt th{font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-sub);padding:9px 12px;border-bottom:1.5px solid var(--rule);text-align:right;white-space:nowrap;}
+.dt th:first-child{text-align:left;}
+.dt td{padding:8px 10px;border-bottom:1px solid var(--rule);text-align:right;font-variant-numeric:tabular-nums;}
+.dt td:first-child{text-align:left;font-weight:500;}
+.dt tr:last-child td{border-bottom:none;font-weight:700;}
+.dt tr.tot td{background:var(--rule);}
+.neg{color:#E07070;font-weight:700;} .pos{color:#6AB08A;font-weight:700;}
+.hl td{background:#f0f0f0!important;}
+
+/* INSIGHT */
+.ins{margin-top:14px;padding:12px 16px;border-radius:8px;font-size:15px;line-height:1.8;}
+
+/* CHART */
+.ch{position:relative;height:240px;}
+.ch-lg{position:relative;height:280px;}
+.ch-sm{position:relative;height:180px;}
+
+/* SCENARIO */
+.sc-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px;}
+.sc-card{border-radius:10px;padding:18px 14px;text-align:center;border:1.5px solid transparent;}
+.sc-bcl{font-size:24px;font-weight:800;line-height:1;margin-bottom:4px;}
+.sc-arr{font-size:16px;color:#bbb;margin:5px 0;}
+.sc-imp{font-size:20px;font-weight:900;}
+.sc-nte{font-size:14px;color:var(--ink-sub);margin-top:4px;}
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="page">
+  <div class="cover-tag">ベネッセ台北支社</div>
+  <div class="cover-title">台湾事業FY25総括、今後の再成長戦略</div>
+  <div class="cover-meta">通貨：日本円（1 NTD = 5 JPY）&emsp; 2026年4月</div>
+  <style>
+.s-step{cursor:pointer;transition:background .15s,box-shadow .15s;}
+.s-step:hover{background:#D0E4F8!important;box-shadow:inset 0 0 0 2px #4A7CC7;}
+.s-step:active{background:#e0e0e0!important;}
+</style>
+<div style="margin-top:36px;border:1.5px solid #C8D8EE;border-radius:10px;overflow:hidden;">
+  <!-- 1段目：01〜06 -->
+  <div style="display:flex;gap:0;border-bottom:1.5px solid var(--rule);">
+    <div class="s-step why" style="flex:1;padding:12px 14px;border-right:1.5px solid var(--rule);font-size:11px;line-height:1.5;" onclick="document.getElementById('page-01').scrollIntoView({behavior:'smooth'})"><div style="font-size:22px;font-weight:800;line-height:1;margin-bottom:3px;color:var(--m-pink-d);">01</div><div style="font-weight:700;font-size:14px;">事業転換の前提</div><div style="color:var(--ink-sub);font-size:13px;">構造改革の背景</div></div>
+    <div class="s-step why" style="flex:1;padding:12px 14px;border-right:1.5px solid var(--rule);font-size:11px;line-height:1.5;" onclick="document.getElementById('page-02').scrollIntoView({behavior:'smooth'})"><div style="font-size:22px;font-weight:800;line-height:1;margin-bottom:3px;color:var(--m-pink-d);">02</div><div style="font-weight:700;font-size:14px;">FY25損益結果</div><div style="color:var(--ink-sub);font-size:13px;">売上891M・▲8M</div></div>
+    <div class="s-step why" style="flex:1;padding:12px 14px;border-right:1.5px solid var(--rule);font-size:11px;line-height:1.5;" onclick="document.getElementById('page-03').scrollIntoView({behavior:'smooth'})"><div style="font-size:22px;font-weight:800;line-height:1;margin-bottom:3px;color:var(--m-pink-d);">03</div><div style="font-weight:700;font-size:14px;">なぜ未達か</div><div style="color:var(--ink-sub);font-size:13px;">構造改革の遅延</div></div>
+    <div class="s-step but" style="flex:1;padding:12px 14px;border-right:1.5px solid var(--rule);font-size:11px;line-height:1.5;" onclick="document.getElementById('page-04').scrollIntoView({behavior:'smooth'})"><div style="font-size:22px;font-weight:800;line-height:1;margin-bottom:3px;color:var(--m-lav-d);">04</div><div style="font-weight:700;font-size:14px;">未達の集中点</div><div style="color:var(--ink-sub);font-size:13px;">前半に95%が集中</div></div>
+    <div class="s-step but" style="flex:1;padding:12px 14px;border-right:1.5px solid var(--rule);font-size:11px;line-height:1.5;" onclick="document.getElementById('page-05').scrollIntoView({behavior:'smooth'})"><div style="font-size:22px;font-weight:800;line-height:1;margin-bottom:3px;color:var(--m-lav-d);">05</div><div style="font-weight:700;font-size:14px;">顧客構造の転換</div><div style="color:var(--ink-sub);font-size:13px;">新規比率 後半68%</div></div>
+    <div class="s-step but" style="flex:1;padding:12px 14px;font-size:11px;line-height:1.5;" onclick="document.getElementById('page-06').scrollIntoView({behavior:'smooth'})"><div style="font-size:22px;font-weight:800;line-height:1;margin-bottom:3px;color:var(--m-lav-d);">06</div><div style="font-weight:700;font-size:14px;">チャネル成長</div><div style="color:var(--ink-sub);font-size:13px;">WEB・TM 後半+32%</div></div>
+  </div>
+  <!-- 2段目：07〜11 -->
+  <div style="display:flex;gap:0;">
+    <div class="s-step but" style="flex:1;padding:12px 14px;border-right:1.5px solid var(--rule);font-size:11px;line-height:1.5;" onclick="document.getElementById('page-07').scrollIntoView({behavior:'smooth'})"><div style="font-size:22px;font-weight:800;line-height:1;margin-bottom:3px;color:var(--m-lav-d);">07</div><div style="font-weight:700;font-size:14px;">舞台劇回復</div><div style="color:var(--ink-sub);font-size:13px;">後半主力が全指標超</div></div>
+    <div class="s-step why" style="flex:1;padding:12px 14px;border-right:1.5px solid var(--rule);font-size:11px;line-height:1.5;" onclick="document.getElementById('page-08').scrollIntoView({behavior:'smooth'})"><div style="font-size:22px;font-weight:800;line-height:1;margin-bottom:3px;color:var(--m-pink-d);">08</div><div style="font-weight:700;font-size:14px;">FPP下方修正</div><div style="color:var(--ink-sub);font-size:13px;">環境変化への対応</div></div>
+    <div class="s-step thr" style="flex:1;padding:12px 14px;border-right:1.5px solid var(--rule);font-size:11px;line-height:1.5;" onclick="document.getElementById('page-09').scrollIntoView({behavior:'smooth'})"><div style="font-size:22px;font-weight:800;line-height:1;margin-bottom:3px;color:var(--m-mint-d);">09</div><div style="font-weight:700;font-size:14px;">FY26注力ポイント</div><div style="color:var(--ink-sub);font-size:13px;">LTV拡大×コスト</div></div>
+    <div class="s-step thr" style="flex:1;padding:12px 14px;border-right:1.5px solid var(--rule);font-size:11px;line-height:1.5;" onclick="document.getElementById('page-10').scrollIntoView({behavior:'smooth'})"><div style="font-size:22px;font-weight:800;line-height:1;margin-bottom:3px;color:var(--m-mint-d);">10</div><div style="font-weight:700;font-size:14px;">顧客解像度</div><div style="color:var(--ink-sub);font-size:13px;">26.9万人を解剖</div></div>
+    <div class="s-step thr" style="flex:1;padding:12px 14px;border-right:1.5px solid var(--rule);font-size:11px;line-height:1.5;" onclick="document.getElementById('page-11').scrollIntoView({behavior:'smooth'})"><div style="font-size:22px;font-weight:800;line-height:1;margin-bottom:3px;color:var(--m-mint-d);">11</div><div style="font-weight:700;font-size:14px;">巧虎ブランド</div><div style="color:var(--ink-sub);font-size:13px;">集客力は健在</div></div>
+    <div style="flex:1;padding:12px 14px;background:#fafafa;"></div>
+  </div>
+</div>
+</div>
+
+<!-- PREMISE 構造改革の前提説明 -->
+<div class="page" id="page-01">
+  <div class="sec-tag">
+    <span class="sec-num" style="background:#333;color:#fff;">01</span>B2C學習商品事業の構造改革
+  </div>
+  <div class="keymsg">
+    <div class="keymsg-txt">事業モデルを根本から転換した。　FY25はその移行初年度である。</div>
+    <div class="keymsg-sub">旧モデルの崩壊（巧連智月刊講座の終了）を受け、FY25より新事業モデルへ全面移行。収益構造・顧客獲得方法・マーケティング手法のすべてを刷新した。</div>
+  </div>
+
+  <!-- 過去→改革後 対比 -->
+  <div style="display:grid;grid-template-columns:1fr 64px 1fr;gap:0;align-items:stretch;margin-bottom:24px;">
+
+    <!-- 過去の戦略 -->
+    <div class="card" style="border-color:#e0e0e0;border-width:1.5px;">
+      <div style="font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#999;margin-bottom:16px;">過去の戦略</div>
+
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <div style="padding:16px 18px;background:#fafafa;border-radius:8px;border-left:3px solid #ccc;">
+          <div style="font-size:13px;font-weight:700;color:#999;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px;">商品</div>
+          <div style="font-size:18px;font-weight:700;color:#555;">単一サブスク講座</div>
+          <div style="font-size:11px;color:#999;margin-top:4px;">巧連智月刊講座のみ。継続課金モデル。</div>
+        </div>
+        <div style="padding:16px 18px;background:#fafafa;border-radius:8px;border-left:3px solid #ccc;">
+          <div style="font-size:13px;font-weight:700;color:#999;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px;">戦略目標</div>
+          <div style="font-size:18px;font-weight:700;color:#555;">在籍最大化</div>
+          <div style="font-size:11px;color:#999;margin-top:4px;">会員数を積み上げ、解約を防ぐことが最優先。</div>
+        </div>
+        <div style="padding:16px 18px;background:#fafafa;border-radius:8px;border-left:3px solid #ccc;">
+          <div style="font-size:13px;font-weight:700;color:#999;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px;">顧客獲得</div>
+          <div style="font-size:18px;font-weight:700;color:#555;">大規模電話営業（TM）</div>
+          <div style="font-size:11px;color:#999;margin-top:4px;">コール件数による獲得。人員依存・コスト大。</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 矢印 -->
+    <div style="display:flex;align-items:center;justify-content:center;">
+      <div style="text-align:center;">
+        <div style="font-size:28px;color:#ccc;">→</div>
+        <div style="font-size:9px;font-weight:700;color:#aaa;letter-spacing:.08em;margin-top:4px;"></div>
+      </div>
+    </div>
+
+    <!-- 改革後の戦略 -->
+    <div class="card" style="border-color:#4A7CC7;border-width:2px;">
+      <div style="font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#1a1a1a;margin-bottom:16px;">改革後の戦略</div>
+
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <div style="padding:16px 18px;background:#EEF4FF;border-radius:8px;border-left:3px solid #4A7CC7;">
+          <div style="font-size:13px;font-weight:700;color:#555;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px;">商品</div>
+          <div style="font-size:18px;font-weight:700;color:#1a1a1a;">単品セット＋生活分野 SKU拡大</div>
+          <div style="font-size:14px;color:#666;margin-top:4px;">學習商品・周邊商品・Mirafeel等、複数カテゴリで展開。</div>
+        </div>
+        <div style="padding:16px 18px;background:#EEF4FF;border-radius:8px;border-left:3px solid #4A7CC7;">
+          <div style="font-size:13px;font-weight:700;color:#555;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px;">戦略目標</div>
+          <div style="font-size:18px;font-weight:700;color:#1a1a1a;">LTV最大化</div>
+          <div style="font-size:14px;color:#666;margin-top:4px;">1顧客との長期的関係を深め、生涯価値を高める。</div>
+        </div>
+        <div style="padding:16px 18px;background:#EEF4FF;border-radius:8px;border-left:3px solid #4A7CC7;">
+          <div style="font-size:13px;font-weight:700;color:#555;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px;">顧客獲得</div>
+          <div style="font-size:18px;font-weight:700;color:#1a1a1a;">LINE DB（BCL）＋マーケティングオートメーション</div>
+          <div style="font-size:14px;color:#666;margin-top:4px;">自社DBを核に、低コストで継続的にアプローチ。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+<!-- 00 FY25損益結果サマリー -->
+<div class="page" id="page-02">
+  <div class="sec-tag">
+    <span class="sec-num" style="background:#333;color:#fff;">02</span>FY25 損益結果
+  </div>
+  <div class="keymsg">
+    <div class="keymsg-txt">売上891M円、営業利益▲8M円。　台幣ベースでも▲160万NTD（▲10.3M NTD）。</div>
+    <div class="keymsg-sub">事業EBITDA合計は+366M円のプラスだが、共通費▲406M円が重く、最終的に▲8M円の赤字着地。為替影響+19M円が一定の下支えとなった。</div>
+  </div>
+
+  <div class="g2" style="margin-bottom:20px;">
+    <!-- 左：台幣ウォーターフォール -->
+    <div class="card">
+      <div class="ctitle">FY25 損益構造（台幣 NTD）</div>
+      <div class="ch-lg"><canvas id="c-wf-ntd"></canvas></div>
+      <div class="ins" style="background:#f5f5f5;color:#333;">
+        銷貨收入181.1M NTD から費用を差し引き、営業利潤<strong>▲10.3M NTD</strong>（台幣▲160萬≒JPY▲8M）。
+      </div>
+    </div>
+    <!-- 右：JPY EBITDA ウォーターフォール -->
+    <div class="card">
+      <div class="ctitle">FY25 Adj. EBITDA ウォーターフォール（日本円）</div>
+      <div class="ch-lg"><canvas id="c-wf-jpy"></canvas></div>
+      <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;">
+        <span style="font-size:11px;padding:3px 10px;background:var(--m-mint);color:var(--m-mint-d);border-radius:6px;font-weight:700;">事業小計 +366M</span>
+        <span style="font-size:11px;padding:3px 10px;background:var(--m-pink);color:var(--m-pink-d);border-radius:6px;font-weight:700;">共通費 ▲406M</span>
+        <span style="font-size:11px;padding:3px 10px;background:var(--m-sky);color:var(--m-sky-d);border-radius:6px;font-weight:700;">為替 +19M</span>
+        <span style="font-size:11px;padding:3px 10px;background:var(--m-lemon);color:var(--m-lemon-d);border-radius:6px;font-weight:700;">合計 ▲8M</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3期推移グラフ -->
+  <div class="card" style="margin-top:20px;">
+    <div class="ctitle">台北支社 損益推移（百万円）　※1NTD=4.89JPY（FY25実績）</div>
+    <div class="g2" style="margin-top:8px;">
+      <div>
+        <div style="font-size:14px;font-weight:700;color:#555;margin-bottom:8px;text-align:center;">売上高</div>
+        <div style="position:relative;height:320px;"><canvas id="c-3yr-rev"></canvas></div>
+      </div>
+      <div>
+        <div style="font-size:14px;font-weight:700;color:#555;margin-bottom:8px;text-align:center;">EBITDA</div>
+        <div style="position:relative;height:320px;"><canvas id="c-3yr-ebi"></canvas></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 01 なぜ未達か（BCL証拠＋アップサイド統合） -->
+<div class="page" id="page-03">
+  <div class="sec-tag">
+    <span class="sec-num" style="background:#333;color:#fff;">03</span>予算未達の理由
+  </div>
+  <div class="keymsg">
+    <div class="keymsg-txt">新マーケ基盤の構築の遅れ→DB再構築の遅延</div>
+    <div class="keymsg-sub">限られたリソース（資金・人力）のなか、開発・実装の難度が想定を超えてしまった。</div>
+  </div>
+
+  <!-- 事業別未達理由 -->
+  <div class="g3" style="margin-bottom:20px;">
+    <div class="card">
+      <div class="ctitle">學習商品</div>
+      <div style="font-size:16px;font-weight:700;color:#1a1a1a;margin-bottom:8px;">商品リリースは順調も、<br>DB不足による販売不振</div>
+      <div style="font-size:15px;color:#666;line-height:1.75;">新商品の開発・投入は計画通り進んだが、顧客へのリーチを担うBCL（LINE DB）の件数が不十分なため、販売転換が伸び悩んだ。</div>
+    </div>
+    <div class="card">
+      <div class="ctitle">舞台劇</div>
+      <div style="font-size:16px;font-weight:700;color:#1a1a1a;margin-bottom:8px;">前半のチケット販売不振＋<br>気象災害による公演中止</div>
+      <div style="font-size:15px;color:#666;line-height:1.75;">年度前半はチケット販売が低調。加えて気象災害による公演中止が発生し、チケット収入＋物販合計で<strong style="color:#c0392b;">▲10百万円</strong>の影響を受けた。</div>
+    </div>
+    <div class="card">
+      <div class="ctitle">IPライセンス</div>
+      <div style="font-size:16px;font-weight:700;color:#1a1a1a;margin-bottom:8px;">キャラコラボ案件は多いが、<br>MD新規案件が伸びず</div>
+      <div style="font-size:15px;color:#666;line-height:1.75;">キャラクターコラボレーション案件は引き続き活発だが、MD（マーチャンダイジング）の新規案件獲得が計画を下回り、授権金収入が伸び悩んだ。</div>
+    </div>
+  </div>
+
+  <!-- 上段：予算差異表 ＋ BCLカバー率 -->
+  <div class="g2" style="margin-bottom:16px;">
+    <div class="card">
+      <div class="ctitle">通期 予算 vs 実績（百万円）</div>
+      <table class="dt">
+        <thead><tr><th>事業</th><th>売上実績</th><th>売上差</th><th>EBITDA実績</th><th>EBITDA差</th></tr></thead>
+        <tbody>
+          <tr><td>學習・周邊</td><td>404</td><td class="neg">▲60</td><td>144</td><td class="neg">▲33</td></tr>
+          <tr><td>舞台劇</td><td>282</td><td class="neg">▲50</td><td>125</td><td class="neg">▲26</td></tr>
+          <tr><td>IP事業</td><td>135</td><td class="neg">▲19</td><td>97</td><td class="neg">▲26</td></tr>
+          <tr><td>共通費用</td><td>—</td><td>—</td><td class="neg">▲406</td><td class="neg">▲20</td></tr>
+          <tr><td>為替影響</td><td>+70</td><td class="pos">+70</td><td>+19</td><td class="pos">+19</td></tr>
+          <tr class="tot"><td>合計</td><td>891</td><td class="neg">▲59</td><td class="neg">▲8</td><td class="neg">▲86</td></tr>
+        </tbody>
+      </table>
+      <div class="ins" style="background:#f5f5f5;color:#333;margin-top:14px;">
+        全事業で未達。特定事業の問題ではなく、<strong>BCL不足による新規顧客獲得ペースの構造的遅延</strong>が根本原因。
+      </div>
+    </div>
+    <div class="card">
+      <div class="ctitle">出生年別 有効BCL件数 & カバー率 — 潜在市場の9.1%しか獲得できていない</div>
+      <div class="ch-lg"><canvas id="c-bcl-cov"></canvas></div>
+      <div class="ins" style="background:#f5f5f5;color:#333;margin-top:14px;">
+        2021〜2022年生まれが最大層でもカバー率15%。2023年以降は急減。<strong>市場の85%以上が未獲得のまま</strong>。
+      </div>
+    </div>
+  </div>
+
+  <!-- 折りたたみ：BCL詳細データ -->
+  <details style="margin-top:4px;">
+    <summary style="cursor:pointer;padding:12px 16px;background:#f5f5f5;border:1.5px solid #e0e0e0;border-radius:8px;font-size:12px;font-weight:700;color:#333;list-style:none;display:flex;align-items:center;gap:8px;user-select:none;">
+      <span id="bcl-toggle-icon" style="font-size:14px;transition:transform .2s;">▶</span>
+      BCL詳細データを見る（現状数値・来源管道・拡充シナリオ）
+    </summary>
+    <div style="padding-top:16px;">
+
+  <!-- 中段：BCL KPI帯 -->
+  <div class="kpi-strip" style="margin-bottom:16px;">
+    <div class="kpi-box" style="background:#f5f5f5;border-radius:10px;border:1.5px solid #e0e0e0;">
+      <div class="kpi-lbl" style="color:#555;">有効BCL</div>
+      <div class="kpi-val" style="color:#1a1a1a;font-size:24px;">148,349件</div>
+      <div class="kpi-nte">現在保有</div>
+    </div>
+    <div class="kpi-box" style="background:#f5f5f5;border-radius:10px;border:1.5px solid #e0e0e0;">
+      <div class="kpi-lbl" style="color:#555;">カバー率</div>
+      <div class="kpi-val" style="color:#1a1a1a;font-size:24px;">9.1%</div>
+      <div class="kpi-nte">潜在163万件のうち</div>
+    </div>
+    <div class="kpi-box" style="background:#f5f5f5;border-radius:10px;border:1.5px solid #e0e0e0;">
+      <div class="kpi-lbl" style="color:#555;">無効BCL（封鎖）</div>
+      <div class="kpi-val" style="color:#1a1a1a;font-size:24px;">63,710件</div>
+      <div class="kpi-nte">再活性化で即時活用可</div>
+    </div>
+    <div class="kpi-box" style="background:#f5f5f5;border-radius:10px;border:1.5px solid #e0e0e0;">
+      <div class="kpi-lbl" style="color:#555;">月次取得ペース</div>
+      <div class="kpi-val" style="color:#1a1a1a;font-size:24px;">1,937件/月</div>
+      <div class="kpi-nte">FY25平均 / 加速が必要</div>
+    </div>
+  </div>
+
+  <!-- 下段：来源管道 ＋ シナリオ -->
+  <div class="g2">
+    <div class="card">
+      <div class="ctitle">来源管道の課題 — 81%が旧巧連智経由</div>
+      <div class="ch"><canvas id="c-bcl-rt"></canvas></div>
+      <div class="ins" style="background:#f5f5f5;color:#333;margin-top:14px;">
+        心測・WEB・舞台劇など<strong>純新規ルートの拡充</strong>が構造改革の本質。無効BCL再活性化は獲得コストゼロの最優先施策。
+      </div>
+    </div>
+    <div class="card">
+      <div class="ctitle">BCL拡充シナリオ — 売上インパクト試算</div>
+      <div style="font-size:10px;color:var(--ink-sub);margin-bottom:8px;">前提：顧客LTV 26,343円（実績平均）/ 転換率 20%（保守的）</div>
+      <div class="sc-row">
+        <div class="sc-card" style="background:#f5f5f5;border:1.5px solid #e0e0e0;">
+          <div style="font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--m-lemon-d);margin-bottom:8px;">保守</div>
+          <div class="sc-bcl" style="color:#555;">+5万件</div>
+          <div class="sc-arr">↓</div>
+          <div class="sc-imp" style="color:#1a1a1a;">+263M円</div>
+          <div class="sc-nte">転換 1万人</div>
+        </div>
+        <div class="sc-card" style="background:#f5f5f5;border:1.5px solid #e0e0e0;">
+          <div style="font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--m-mint-d);margin-bottom:8px;">中央 ★</div>
+          <div class="sc-bcl" style="color:#555;">+10万件</div>
+          <div class="sc-arr">↓</div>
+          <div class="sc-imp" style="color:#1a1a1a;">+527M円</div>
+          <div class="sc-nte">転換 2万人</div>
+        </div>
+        <div class="sc-card" style="background:#f5f5f5;border:1.5px solid #e0e0e0;">
+          <div style="font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--m-lav-d);margin-bottom:8px;">積極</div>
+          <div class="sc-bcl" style="color:#555;">+20万件</div>
+          <div class="sc-arr">↓</div>
+          <div class="sc-imp" style="color:#1a1a1a;">+1,054M円</div>
+          <div class="sc-nte">転換 4万人</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    </div><!-- /折りたたみ内容 -->
+  </details>
+</div>
+
+<!-- 02 未達は前半に集中 -->
+<div class="page" id="page-04">
+  <div class="sec-tag">
+    <span class="sec-num" style="background:#333;color:#fff;">04</span>未達の95%は前半に集中していた
+  </div>
+  <div class="keymsg">
+    <div class="keymsg-txt">後半は売上予算達成率99%。　EBITDAも黒字転換した。</div>
+    <div class="keymsg-sub">通期の売上未達▲59のうち▲56（95%）が前半に集中。後半は売上▲3まで回復し、Q4売上は予算を+21超過。EBITDAも後半合計+3の黒字転換。事業は明確な回復軌道に乗っている。</div>
+  </div>
+
+  <div class="hh-grid">
+    <div class="card" style="border-color:#e0e0e0;border-width:1.5px;">
+      <div class="ctitle">前半（Q1+Q2）</div>
+      <div class="hh-inner">
+        <div class="kpi-box" style="background:#f5f5f5;">
+          <div class="kpi-lbl" style="color:#555;">売上実績</div>
+          <div class="kpi-val" style="color:#1a1a1a;">436M</div>
+          <div class="kpi-nte">予算492M</div>
+          <span class="kpi-delta" style="background:var(--m-pink-d);color:#fff;">▲56M</span>
+        </div>
+        <div class="kpi-box" style="background:#f5f5f5;">
+          <div class="kpi-lbl" style="color:#555;">EBITDA実績</div>
+          <div class="kpi-val" style="color:#1a1a1a;">▲11M</div>
+          <div class="kpi-nte">予算+36M</div>
+          <span class="kpi-delta" style="background:var(--m-pink-d);color:#fff;">▲47M</span>
+        </div>
+      </div>
+      <div class="ch-sm"><canvas id="c-h1"></canvas></div>
+    </div>
+    <div class="card" style="border-color:#e0e0e0;border-width:1.5px;">
+      <div class="ctitle">後半（Q3+Q4）← 回復</div>
+      <div class="hh-inner">
+        <div class="kpi-box" style="background:#f5f5f5;">
+          <div class="kpi-lbl" style="color:#555;">売上実績</div>
+          <div class="kpi-val" style="color:#1a1a1a;">455M</div>
+          <div class="kpi-nte">予算458M</div>
+          <span class="kpi-delta" style="background:var(--m-mint-d);color:#fff;">▲3M のみ</span>
+        </div>
+        <div class="kpi-box" style="background:#f5f5f5;">
+          <div class="kpi-lbl" style="color:#555;">EBITDA実績</div>
+          <div class="kpi-val" style="color:#1a1a1a;">+3M</div>
+          <div class="kpi-nte">予算+42M</div>
+          <span class="kpi-delta" style="background:var(--m-mint-d);color:#fff;">黒字転換</span>
+        </div>
+      </div>
+      <div class="ch-sm"><canvas id="c-h2"></canvas></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="ctitle">四半期別 予算差の推移（百万円）— Q4が唯一のプラス</div>
+    <div class="ch-lg"><canvas id="c-qdiff"></canvas></div>
+    <div class="ins" style="background:#f5f5f5;color:#333;">
+      Q1は売上+6・EBITDA+23と好スタート。Q2で大きく落ち込み（売上▲62）、Q3が底（EBITDA▲22）。<strong>Q4で売上が予算超過（+21）</strong>——明確な回復軌道への転換点。
+    </div>
+  </div>
+</div>
+
+<!-- 03 顧客構造の転換 -->
+<div class="page" id="page-05">
+  <div class="sec-tag">
+    <span class="sec-num" style="background:#333;color:#fff;">05</span>顧客構造が根本から変わった
+  </div>
+  <div class="keymsg">
+    <div class="keymsg-txt">後半は新規顧客が全体の68%。　旧月刊依存からの脱却は数字に出ている。</div>
+    <div class="keymsg-sub">前半52%→後半68%へ上昇。さらに新規顧客の絶対数も前半3,177人→後半4,886人（+54%増）。旧会員の自然減だけでなく、純粋な新規獲得増が起きている。</div>
+  </div>
+  <div class="card" style="margin-bottom:20px;">
+    <div class="ctitle">月次 新規 vs 旧会員 顧客数 & 新規比率（FY25）</div>
+    <div class="ch-lg"><canvas id="c-new-old"></canvas></div>
+  </div>
+  <div class="g3">
+    <div class="kpi-box" style="background:var(--m-pink);border:1.5px solid var(--m-pink);border-radius:10px;padding:20px;">
+      <div class="kpi-lbl" style="color:#555;">前半 新規比率</div>
+      <div class="kpi-val" style="color:#1a1a1a;font-size:36px;">52%</div>
+      <div class="kpi-nte">新規 3,177人 / 旧 2,882人</div>
+    </div>
+    <div class="kpi-box" style="background:var(--m-mint);border:1.5px solid var(--m-mint);border-radius:10px;padding:20px;">
+      <div class="kpi-lbl" style="color:#555;">後半 新規比率</div>
+      <div class="kpi-val" style="color:#1a1a1a;font-size:36px;">68%</div>
+      <div class="kpi-nte">新規 4,886人 / 旧 2,322人</div>
+    </div>
+    <div class="kpi-box" style="background:var(--m-lav);border:1.5px solid var(--m-lav);border-radius:10px;padding:20px;">
+      <div class="kpi-lbl" style="color:#555;">新規獲得 絶対数増</div>
+      <div class="kpi-val" style="color:#1a1a1a;font-size:36px;">+54%</div>
+      <div class="kpi-nte">3,177人 → 4,886人</div>
+    </div>
+  </div>
+</div>
+
+<!-- 04 チャネル成長 -->
+<div class="page" id="page-06">
+  <div class="sec-tag">
+    <span class="sec-num" style="background:#333;color:#fff;">06</span>新規獲得チャネルが後半に加速
+  </div>
+  <div class="keymsg">
+    <div class="keymsg-txt">WEBは後半+55%、TMも+13%。　2チャネル合計で後半+32%加速。</div>
+    <div class="keymsg-sub">WEBは通年でFY24比+26%成長。前半月6〜11M水準が後半は月10〜18Mへ拡大。TMも後半+12.8%回復。WEB+TM合計で前半98M → 後半129M（+32%）。</div>
+  </div>
+  <div class="g2">
+    <div class="card">
+      <div class="ctitle">WEB・TM 月次売上推移（百万円）</div>
+      <div class="ch-lg"><canvas id="c-ch-line"></canvas></div>
+    </div>
+    <div class="card">
+      <div class="ctitle">前半 vs 後半 比較（百万円）</div>
+      <div class="ch"><canvas id="c-ch-hh"></canvas></div>
+      <div class="ins" style="background:#f5f5f5;color:#333;margin-top:14px;">
+        WEB前半45M → 後半<strong>70M（+55%）</strong><br>TM前半53M → 後半<strong>59M（+13%）</strong><br>合計+32%の後半加速。
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 05 舞台劇回復 -->
+<div class="page" id="page-07">
+  <div class="sec-tag">
+    <span class="sec-num" style="background:#333;color:#fff;">07</span>舞台劇、後半主力が全指標で前半を超えた
+  </div>
+  <div class="keymsg">
+    <div class="keymsg-txt">「主力公演（後半）」が票房121M・場あたり812人を記録。夏季公演を上回った。</div>
+    <div class="keymsg-sub">前半夏季（精靈の魔法夢境）に対し、後半春季（主力公演（後半））は票房・人次・場あたり集客の全指標で上回った。花神祭（企業包場）を除いた一般販売ベース。</div>
+  </div>
+
+  <!-- 3指標グラフ -->
+  <div class="g3" style="margin-bottom:20px;">
+    <div class="card" style="text-align:center;min-width:0;">
+      <div class="ctitle">票房（百万円）</div>
+      <div style="position:relative;height:160px;"><canvas id="c-stage-rev"></canvas></div>
+      <div style="display:flex;align-items:center;justify-content:center;gap:12px;margin-top:12px;">
+        <div style="text-align:center;">
+          <div style="font-size:18px;font-weight:800;color:#aaa;">101.8M</div>
+        </div>
+        <div style="font-size:18px;color:#ccc;">→</div>
+        <div style="text-align:center;">
+          <div style="font-size:22px;font-weight:900;color:#6EC4A7;">120.6M</div>
+          <div style="font-size:10px;font-weight:700;color:#6EC4A7;">+18.4M（+18%）</div>
+        </div>
+      </div>
+    </div>
+    <div class="card" style="text-align:center;min-width:0;">
+      <div class="ctitle">総人次（人）</div>
+      <div style="position:relative;height:160px;"><canvas id="c-stage-pax"></canvas></div>
+      <div style="display:flex;align-items:center;justify-content:center;gap:12px;margin-top:12px;">
+        <div style="text-align:center;">
+          <div style="font-size:18px;font-weight:800;color:#aaa;">18,168</div>
+        </div>
+        <div style="font-size:18px;color:#ccc;">→</div>
+        <div style="text-align:center;">
+          <div style="font-size:22px;font-weight:900;color:#6EC4A7;">21,930</div>
+          <div style="font-size:10px;font-weight:700;color:#6EC4A7;">+3,762人（+21%）</div>
+        </div>
+      </div>
+    </div>
+    <div class="card" style="text-align:center;min-width:0;">
+      <div class="ctitle">場あたり人次（人/場）</div>
+      <div style="position:relative;height:160px;"><canvas id="c-stage-ppf"></canvas></div>
+      <div style="display:flex;align-items:center;justify-content:center;gap:12px;margin-top:12px;">
+        <div style="text-align:center;">
+          <div style="font-size:18px;font-weight:800;color:#aaa;">699</div>
+        </div>
+        <div style="font-size:18px;color:#ccc;">→</div>
+        <div style="text-align:center;">
+          <div style="font-size:22px;font-weight:900;color:#6EC4A7;">812</div>
+          <div style="font-size:10px;font-weight:700;color:#6EC4A7;">+113人（+16%）</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 公演別実績表 -->
+  <div class="card">
+    <div class="ctitle">FY25 公演別実績</div>
+    <table class="dt">
+      <thead><tr><th>公演</th><th>期間</th><th>票房</th><th>人次</th><th>場あたり人次</th></tr></thead>
+      <tbody>
+        <tr><td>Musicalia</td><td>前半</td><td>28.6M</td><td>4,384</td><td>1,096</td></tr>
+        <tr><td>主力公演（前半）</td><td>前半</td><td>101.8M</td><td>18,168</td><td>699</td></tr>
+        <tr class="hl"><td><strong>主力公演（後半）</strong></td><td>後半</td><td><strong>120.6M</strong></td><td><strong>21,930</strong></td><td><strong>812</strong></td></tr>
+        <tr><td>英語劇</td><td>後半</td><td>18.3M</td><td>4,931</td><td>308</td></tr>
+        <tr><td>耶誕特別演出</td><td>後半</td><td>1.9M</td><td>2,676</td><td>1,338</td></tr>
+      </tbody>
+    </table>
+    <div class="ins" style="background:#f5f5f5;color:#333;margin-top:14px;">
+      ※花神祭（台積電・聯電企業包場）は一般販売外のため除外。後半主力が夏季を全指標で上回ったことが舞台劇回復の証拠。
+    </div>
+  </div>
+
+  <!-- 公演種類 折りたたみ -->
+  <details style="margin-top:16px;">
+    <summary style="cursor:pointer;padding:12px 16px;background:#f5f5f5;border:1.5px solid #e0e0e0;border-radius:8px;font-size:16px;font-weight:700;color:#333;list-style:none;display:flex;align-items:center;gap:8px;user-select:none;">
+      <span style="font-size:14px;transition:transform .2s;">▶</span>
+      舞台劇公演内容
+    </summary>
+    <div style="padding-top:16px;">
+
+      <!-- 行1：主力公演2本 -->
+      <div class="g2" style="margin-bottom:16px;">
+        <div class="card" style="text-align:center;padding:16px;">
+          <div style="font-size:10px;font-weight:700;color:#555;letter-spacing:.1em;margin-bottom:10px;">主力公演（夏・前半）</div>
+          <img src="https://raw.githubusercontent.com/kazuyukikonuma/260424for-japanese-colleague/main/image_001.png" style="width:100%;max-width:220px;height:auto;border-radius:8px;" alt="主力公演（夏・前半）">
+          <div style="font-size:11px;color:#666;margin-top:8px;line-height:1.6;">夏季の親子向けキャラクター公演。全国主要都市で巡回上演。</div>
+        </div>
+        <div class="card" style="text-align:center;padding:16px;">
+          <div style="font-size:10px;font-weight:700;color:#555;letter-spacing:.1em;margin-bottom:10px;">主力公演（春・後半）</div>
+          <img src="https://raw.githubusercontent.com/kazuyukikonuma/260424for-japanese-colleague/main/image_002.png" style="width:100%;max-width:220px;height:auto;border-radius:8px;" alt="主力公演（春・後半）">
+          <div style="font-size:11px;color:#666;margin-top:8px;line-height:1.6;">春季の主力公演。FY25後半の回復をけん引した。</div>
+        </div>
+      </div>
+
+      <!-- 行2：音楽劇・クリスマス・英語劇 3列 -->
+      <div class="g3" style="margin-bottom:16px;">
+        <div class="card" style="text-align:center;padding:16px;">
+          <div style="font-size:10px;font-weight:700;color:#555;letter-spacing:.1em;margin-bottom:10px;">音楽劇（Musicalia）</div>
+          <img src="https://raw.githubusercontent.com/kazuyukikonuma/260424for-japanese-colleague/main/image_003.png" style="width:100%;max-width:220px;height:auto;border-radius:8px;" alt="音楽劇（Musicalia）">
+          <div style="font-size:11px;color:#666;margin-top:8px;line-height:1.6;">旗艦級ミュージカル公演。台北表演芸術中心 大劇院で上演。</div>
+        </div>
+        <div class="card" style="text-align:center;padding:16px;">
+          <div style="font-size:10px;font-weight:700;color:#555;letter-spacing:.1em;margin-bottom:10px;">クリスマス特別イベント</div>
+          <img src="https://raw.githubusercontent.com/kazuyukikonuma/260424for-japanese-colleague/main/image_004.png" style="width:100%;max-width:220px;height:auto;border-radius:8px;" alt="クリスマス特別イベント">
+          <div style="font-size:11px;color:#666;margin-top:8px;line-height:1.6;">FY25初実施のスペシャルコンサート。台北流行芸術中心で上演。</div>
+        </div>
+        <div class="card" style="text-align:center;padding:16px;">
+          <div style="font-size:10px;font-weight:700;color:#555;letter-spacing:.1em;margin-bottom:10px;">英語劇</div>
+          <img src="https://raw.githubusercontent.com/kazuyukikonuma/260424for-japanese-colleague/main/image_005.png" style="width:100%;max-width:220px;height:auto;border-radius:8px;" alt="英語劇">
+          <div style="font-size:11px;color:#666;margin-top:8px;line-height:1.6;">英語学習を兼ねた公演。台北兒童新樂園で長期上演。</div>
+        </div>
+      </div>
+
+
+      <!-- 行3：BIZARROPIA（フル幅） -->
+      <div class="card" style="padding:16px;margin-bottom:16px;">
+        <div style="font-size:10px;font-weight:700;color:#555;letter-spacing:.1em;margin-bottom:12px;text-align:center;">音楽劇②「BIZARROPIA」</div>
+        <div style="display:flex;gap:16px;justify-content:center;align-items:stretch;">
+          <img src="https://raw.githubusercontent.com/kazuyukikonuma/260424for-japanese-colleague/main/image_006.png" style="width:50%;max-width:340px;height:300px;object-fit:cover;border-radius:8px;" alt="BIZARROPIA poster">
+          <img src="https://raw.githubusercontent.com/kazuyukikonuma/260424for-japanese-colleague/main/image_007.png" style="width:50%;max-width:340px;height:300px;object-fit:cover;border-radius:8px;" alt="BIZARROPIA stage">
+        </div>
+        <div style="font-size:11px;color:#666;margin-top:12px;text-align:center;line-height:1.8;max-width:600px;margin-left:auto;margin-right:auto;">通常公演とは異なり、歌とダンス、様々な演出で親子で楽しめるショーを目指しています。親子向けショーの新たな手法の開発を目指し、実験的な公演でもあります。</div>
+      </div>
+
+    </div>
+  </details>
+</div>
+
+<!-- 07 FY26以降の目標 -->
+<script>
+const FONT='Noto Sans JP,sans-serif';
+Chart.defaults.font.family=FONT;
+Chart.defaults.font.size=11;
+Chart.defaults.color='#4a5a78';
+const GRID={color:'#dde6f0',lineWidth:1};
+
+// ブルー系パレット → ニュートラル＋マカロンアクセント
+const PK='#f5f5f5',PKD='#333333';
+const LV='#f5f5f5',LVD='#333333';
+const MN='#f5f5f5',MND='#333333';
+const SK='#f5f5f5',SKD='#333333';
+const LM='#f5f5f5',LMD='#333333';
+const PC='#f5f5f5',PCD='#333333';
+const RU='#e8e8e8';
+// マカロンアクセント（グラフ専用）
+const AC_BLUE  = '#4A7CC7';
+const AC_CORAL = '#7AAEE0';
+const AC_MINT  = '#6AB08A';
+const AC_LAV   = '#8B9ED4';
+const AC_ROSE  = '#E07070';
+const AC_LEMON = '#F0C050';
+const AC_GREY  = '#C4B898';
+
+// 00a NTD floating bar ウォーターフォール
+new Chart('c-wf-ntd',{
+  type:'bar',
+  data:{
+    labels:['銷貨收入','銷貨成本','營業費用','人件費','一般管理費','營業利潤'],
+    datasets:[{
+      data:[[0,181.1],[181.1,123.1],[123.1,68.1],[68.1,21.2],[21.2,-10.3],[0,-10.3]],
+      backgroundColor:[AC_MINT+'cc',AC_BLUE+'cc',AC_BLUE+'cc',AC_BLUE+'cc',AC_BLUE+'cc',AC_ROSE+'cc'],
+      borderRadius:3,borderWidth:0
+    }]
+  },
+  options:{
+    responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>{
+      const v=[181.1,-58,-55,-46.9,-31.5,-10.3][c.dataIndex];
+      return ` ${v>0?'+':'▲'}${Math.abs(v)}M NTD`;
+    }}}},
+    scales:{
+      x:{grid:{display:false}},
+      y:{grid:{color:'#dde6f0',lineWidth:1},min:-30,max:210,ticks:{callback:v=>v+'M'},title:{display:true,text:'NTD（百万）',font:{size:10}}}
+    }
+  }
+});
+
+// 00b JPY EBITDA floating bar ウォーターフォール
+new Chart('c-wf-jpy',{
+  type:'bar',
+  data:{
+    labels:['學習周邊','舞台劇','IP事業','共通費','為替影響','合計'],
+    datasets:[{
+      data:[[0,144],[144,269],[269,366],[366,-40],[-40,-21],[0,-8]],
+      backgroundColor:[AC_MINT+'cc',AC_MINT+'cc',AC_MINT+'cc',AC_ROSE+'cc',AC_BLUE+'cc',AC_LEMON+'cc'],
+      borderRadius:3,borderWidth:0
+    }]
+  },
+  options:{
+    responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>{
+      const v=[144,125,97,-406,19,-8][c.dataIndex];
+      return ` ${v>0?'+':'▲'}${Math.abs(v)}M円`;
+    }}}},
+    scales:{
+      x:{grid:{display:false}},
+      y:{grid:{color:'#dde6f0',lineWidth:1},min:-60,max:450,ticks:{callback:v=>v+'M'},title:{display:true,text:'百万円',font:{size:10}}}
+    }
+  }
+});
+
+// 02 前半棒
+new Chart('c-h1',{type:'bar',data:{labels:['売上','EBITDA'],datasets:[{label:'予算',data:[492,36],backgroundColor:RU,borderRadius:4},{label:'実績',data:[436,-11],backgroundColor:[AC_ROSE+'cc',AC_ROSE+'cc'],borderRadius:4}]},options:{responsive:true,maintainAspectRatio:false,indexAxis:'y',plugins:{legend:{position:'top',labels:{padding:10,boxWidth:10}}},scales:{x:{grid:GRID},y:{grid:{display:false}}}}});
+
+// 02 後半棒
+new Chart('c-h2',{type:'bar',data:{labels:['売上','EBITDA'],datasets:[{label:'予算',data:[458,42],backgroundColor:RU,borderRadius:4},{label:'実績',data:[455,3],backgroundColor:[AC_MINT+'cc',AC_MINT+'cc'],borderRadius:4}]},options:{responsive:true,maintainAspectRatio:false,indexAxis:'y',plugins:{legend:{position:'top',labels:{padding:10,boxWidth:10}}},scales:{x:{grid:GRID},y:{grid:{display:false}}}}});
+
+// 02 四半期差
+const qDiffRev=[6,-62,-24,21],qDiffEbi=[23,-70,-22,-17];
+new Chart('c-qdiff',{type:'bar',data:{labels:['Q1','Q2','Q3','Q4'],datasets:[{label:'売上 予算差',data:qDiffRev,backgroundColor:qDiffRev.map(v=>v>=0?AC_MINT+'cc':AC_ROSE+'cc'),borderRadius:4},{label:'EBITDA 予算差',data:qDiffEbi,backgroundColor:qDiffEbi.map(v=>v>=0?AC_BLUE+'88':AC_LAV+'88'),borderRadius:4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'top',labels:{padding:14,boxWidth:12}},tooltip:{mode:'index'}},scales:{x:{grid:{display:false}},y:{grid:GRID,ticks:{callback:v=>(v>=0?'+':'')+v+'M'},title:{display:true,text:'予算差（百万円）',font:{size:10}}}}}});
+
+// 03 新規vs旧
+const MO=['4月','5月','6月','7月','8月','9月','10月','11月','12月','1月','2月','3月'];
+const NC=[387,1023,504,438,459,366,687,778,472,937,682,1330];
+const OC=[303,958,547,481,369,224,395,286,257,319,170,895];
+const RT=NC.map((n,i)=>Math.round(n/(n+OC[i])*100));
+new Chart('c-new-old',{type:'bar',data:{labels:MO,datasets:[{label:'新規顧客',data:NC,backgroundColor:AC_BLUE+'cc',stack:'s',borderRadius:3},{label:'旧会員',data:OC,backgroundColor:AC_GREY+'66',stack:'s',borderRadius:3},{label:'新規比率%（右軸）',data:RT,type:'line',yAxisID:'y2',borderColor:AC_CORAL,backgroundColor:'transparent',borderWidth:2.5,pointRadius:4,pointBackgroundColor:AC_CORAL,tension:0.35}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'top',labels:{padding:14,boxWidth:12}},tooltip:{mode:'index'}},scales:{x:{grid:{display:false},stacked:true},y:{stacked:true,grid:GRID,ticks:{callback:v=>v+'人'}},y2:{position:'right',grid:{display:false},min:0,max:100,ticks:{callback:v=>v+'%'},title:{display:true,text:'新規比率',font:{size:10}}}}}});
+
+// 04 チャネル折れ線
+const WEB=[6.0,11.2,7.8,7.7,7.7,4.9,11.7,12.0,10.6,8.8,9.2,17.9];
+const TM=[8.6,11.6,9.9,8.2,8.2,6.0,11.0,9.0,9.0,9.5,5.7,15.1];
+new Chart('c-ch-line',{type:'line',data:{labels:MO,datasets:[{label:'WEB',data:WEB,borderColor:AC_BLUE,backgroundColor:AC_BLUE+'22',fill:true,borderWidth:2.5,pointRadius:4,pointBackgroundColor:AC_BLUE,tension:0.35},{label:'TM',data:TM,borderColor:AC_CORAL,backgroundColor:AC_CORAL+'22',fill:true,borderWidth:2.5,pointRadius:4,pointBackgroundColor:AC_CORAL,tension:0.35}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'top',labels:{padding:14,boxWidth:12}}},scales:{x:{grid:{display:false}},y:{grid:GRID,ticks:{callback:v=>v+'M'}}}}});
+
+// 04 前後半比較
+new Chart('c-ch-hh',{type:'bar',data:{labels:['前半（Q1+Q2）','後半（Q3+Q4）'],datasets:[{label:'WEB',data:[45.2,70.1],backgroundColor:AC_BLUE+'cc',borderRadius:4},{label:'TM',data:[52.5,59.2],backgroundColor:AC_CORAL+'cc',borderRadius:4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'top',labels:{padding:12,boxWidth:10}}},scales:{x:{grid:{display:false}},y:{grid:GRID,ticks:{callback:v=>v+'M'}}}}});
+
+// 05 舞台劇：3指標グラフ
+const STAGE_LABELS = ['主力公演\n（前半）','主力公演\n（後半）'];
+const STAGE_GREY  = '#C4B898';
+const STAGE_MINT  = '#6AB08A';
+const STAGE_OPTS = (max) => ({
+  responsive:true, maintainAspectRatio:false,
+  plugins:{ legend:{display:false}, tooltip:{callbacks:{label:c=>` ${c.parsed.y.toLocaleString()}`}} },
+  scales:{
+    x:{grid:{display:false}, ticks:{font:{size:10}, maxRotation:0}},
+    y:{grid:{color:'#e8e8e8'}, min:0, max:max, ticks:{font:{size:10}}}
+  }
+});
+new Chart('c-stage-rev',{type:'bar',data:{labels:STAGE_LABELS,datasets:[{data:[101.8,120.6],backgroundColor:[STAGE_GREY,STAGE_MINT],borderRadius:4,borderWidth:0}]},options:STAGE_OPTS(150)});
+new Chart('c-stage-pax',{type:'bar',data:{labels:STAGE_LABELS,datasets:[{data:[18168,21930],backgroundColor:[STAGE_GREY,STAGE_MINT],borderRadius:4,borderWidth:0}]},options:STAGE_OPTS(26000)});
+new Chart('c-stage-ppf',{type:'bar',data:{labels:STAGE_LABELS,datasets:[{data:[699,812],backgroundColor:[STAGE_GREY,STAGE_MINT],borderRadius:4,borderWidth:0}]},options:STAGE_OPTS(1000)});
+
+// 06 BCLカバー率
+const YRS=['2017','2018','2019','2020','2021','2022','2023','2024','2025','2026','2027'];
+const BCL=[11526,15321,20007,23097,24007,21257,12214,11228,6338,3347,7];
+const COV=[5.9,8.4,11.3,14.0,15.6,15.3,9.0,8.6,5.1,2.8,0.0];
+new Chart('c-bcl-cov',{type:'bar',data:{labels:YRS.map(y=>y+'年生'),datasets:[{label:'有効BCL件数',data:BCL,backgroundColor:AC_BLUE+'55',borderColor:AC_BLUE,borderWidth:1,borderRadius:3,yAxisID:'y'},{label:'カバー率%',data:COV,type:'line',yAxisID:'y2',borderColor:AC_CORAL,backgroundColor:'transparent',borderWidth:2.5,pointRadius:4,pointBackgroundColor:AC_CORAL,tension:0.3}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'top',labels:{padding:14,boxWidth:12}}},scales:{x:{grid:{display:false}},y:{grid:GRID,ticks:{callback:v=>(v/1000).toFixed(0)+'K'},title:{display:true,text:'件数',font:{size:10}}},y2:{position:'right',grid:{display:false},min:0,max:25,ticks:{callback:v=>v+'%'},title:{display:true,text:'カバー率',font:{size:10}}}}}});
+
+// 06 BCL管道
+new Chart('c-bcl-rt',{type:'doughnut',data:{labels:['全管道（旧巧連智）','心測','官網-Welcome','LineOA','舞台劇','その他'],datasets:[{data:[120911,9596,2158,2041,1253,12390],backgroundColor:[AC_ROSE+'cc',AC_BLUE,AC_MINT,AC_CORAL,AC_LAV,RU],borderWidth:2,borderColor:'#fff'}]},options:{responsive:true,maintainAspectRatio:false,cutout:'55%',plugins:{legend:{position:'right',labels:{padding:10,boxWidth:10,font:{size:10}}},tooltip:{callbacks:{label:c=>` ${c.label}: ${c.parsed.toLocaleString()}件 (${(c.parsed/148349*100).toFixed(1)}%)`}}}}});
+</script>
+
+<!-- ══════════════════════════════════════════
+     07 — FY26以降の目標
+════════════════════════════════════════════ -->
+<div class="page" id="page-08">
+  <div class="sec-tag">
+    <span class="sec-num" style="background:#333;color:#fff;">08</span>FPPの下方修正
+  </div>
+  <div class="keymsg">
+    <div class="keymsg-txt">台湾の出生数は10年で半減。　市場の構造的縮小を前提に目標を再設定した。</div>
+    <div class="keymsg-sub">2015年に213,598人だった台湾の年間出生数は、2025年には107,812人まで減少（▲50%）。前回FPP（25/03）の高成長前提は現実と乖離し、全期間で売上・EBITDA ともに大幅下方修正。この水準を保守的ベースラインとして、打ち手の効果で上振れを狙う。</div>
+  </div>
+
+  <!-- 上段：人口推移グラフ -->
+  <div class="card" style="margin-bottom:20px;">
+    <div class="ctitle">台湾 年間出生数の推移（万人）</div>
+    <div class="ch-lg"><canvas id="c-birth"></canvas></div>
+    <div class="ins" style="background:#f5f5f5;color:#333;">
+      2015年ピーク比<strong>▲50%</strong>（2025年実績）。2030年には推計8万人台まで減少見込み。ベネッセの対象市場は構造的に縮小し続ける。
+    </div>
+  </div>
+
+  <!-- 下段：売上・EBITDA目標 -->
+  <div class="g2" style="margin-bottom:20px;">
+    <div class="card">
+      <div class="ctitle">前回FPP vs 今回修正 — 売上目標（百万円）</div>
+      <div class="ch"><canvas id="c-target-rev"></canvas></div>
+    </div>
+    <div class="card">
+      <div class="ctitle">前回FPP vs 今回修正 — EBITDA目標（百万円）</div>
+      <div class="ch"><canvas id="c-target-ebi"></canvas></div>
+    </div>
+  </div>
+
+  <details style="margin-top:4px;">
+    <summary style="cursor:pointer;padding:12px 16px;background:#f5f5f5;border:1.5px solid #e0e0e0;border-radius:8px;font-size:16px;font-weight:700;color:#333;list-style:none;display:flex;align-items:center;gap:8px;user-select:none;">
+      <span style="font-size:14px;transition:transform .2s;">▶</span>
+      FY26〜FY30 目標数値の詳細を見る
+    </summary>
+    <div style="padding-top:16px;">
+  <div class="card">
+    <div class="ctitle">FY26〜FY30 目標数値（今回修正・百万円）</div>
+    <table class="dt">
+      <thead>
+        <tr><th>事業</th><th>FY25実績</th><th>FY26</th><th>FY27</th><th>FY28</th><th>FY29</th><th>FY30</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>學習周邊事業 売上</td><td>402</td><td>425</td><td>552</td><td>604</td><td>656</td><td>701</td></tr>
+        <tr><td>舞台劇事業 売上</td><td>303</td><td>337</td><td>342</td><td>347</td><td>353</td><td>356</td></tr>
+        <tr><td>ライセンス事業 売上</td><td>118</td><td>140</td><td>143</td><td>144</td><td>146</td><td>149</td></tr>
+        <tr class="tot"><td>台北支社合計 売上</td><td>823</td><td>902</td><td>1,037</td><td>1,095</td><td>1,154</td><td>1,205</td></tr>
+        <tr><td>學習周邊事業 EBITDA</td><td>190</td><td>188</td><td>214</td><td>230</td><td>254</td><td>274</td></tr>
+        <tr><td>舞台劇事業 EBITDA</td><td>122</td><td>138</td><td>140</td><td>142</td><td>144</td><td>146</td></tr>
+        <tr><td>ライセンス事業 EBITDA</td><td>88</td><td>99</td><td>101</td><td>102</td><td>103</td><td>105</td></tr>
+        <tr><td>共通費用</td><td class="neg">▲413</td><td class="neg">▲420</td><td class="neg">▲447</td><td class="neg">▲447</td><td class="neg">▲447</td><td class="neg">▲447</td></tr>
+        <tr class="tot"><td>台北支社合計 EBITDA</td><td class="neg">▲13</td><td>5</td><td>8</td><td>27</td><td>54</td><td>78</td></tr>
+      </tbody>
+    </table>
+    <div class="ins" style="background:#f5f5f5;color:#333;">
+      FY26売上902Mは実績891Mから+11M（+1.2%）と小幅成長。FY27以降は打ち手の積み上げで段階的に拡大。<strong>FY25実績はFY25計画（823M）より実際は891Mで上回っており</strong>、出発点はこの下方修正目標より実態として高い。
+    </div>
+  </div>
+    </div>
+  </details>
+</div>
+
+<!-- 07→08 トランジションメッセージ -->
+<div class="page">
+  <div class="card" style="border-left:4px solid #4A7CC7;padding:36px 40px;">
+    <div style="font-size:28px;font-weight:800;color:#1a1a1a;line-height:1.4;">FPP目標の下方修正はしたが、<br>環境変化へ対抗できる事業構造への挑戦を続ける。</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     08 — FY26以降の注力ポイント
+════════════════════════════════════════════ -->
+<div class="page" id="page-09">
+  <div class="sec-tag">
+    <span class="sec-num" style="background:#333;color:#fff;">09</span>FY26以降の注力ポイント
+  </div>
+  <div class="keymsg">
+    <div class="keymsg-txt">利益向上の打ち手はシンプル。　LTV拡大とコストコントロール。</div>
+    <div class="keymsg-sub">縮小する市場でEBITDAを改善するカギは2つ。顧客ひとりあたりの価値（LTV）を最大化し、同時に事業・共通コストを構造的に削減する。</div>
+  </div>
+
+  <!-- ❶ LTVの拡大 -->
+  <div class="card" style="margin-bottom:16px;border-left:4px solid #5B9BD5;">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;">
+      <div style="width:36px;height:36px;border-radius:50%;background:#5B9BD5;color:#fff;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900;flex-shrink:0;">❶</div>
+      <div style="font-size:18px;font-weight:800;color:#5B9BD5;">LTVの拡大</div>
+    </div>
+
+    <!-- ❶-1 SKUの拡大 -->
+    <div style="margin-bottom:20px;">
+      <div style="font-size:16px;font-weight:700;color:#333;margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid #e0e0e0;">❶-1　SKUの拡大</div>
+      <div style="font-size:12px;color:#555;line-height:1.8;margin-bottom:12px;">IPパワーを活用し、自社のみならず様々な企業とのコラボを通し、在庫リスクを最小化したSKUの拡大を目指す。</div>
+      <div style="font-size:15px;line-height:2.0;color:#333;">
+        ・外部企業との商品共同開発（IPライセンス進化）<br>
+        ・<span style="color:#c0392b;">本社共同制作、素材活用によるSKU拡大</span><br>
+        ・<span style="color:#c0392b;">日本ライセンス商品の台湾市場導入支援</span>
+      </div>
+    <!-- コラボ商品展開 -->
+    <details style="margin-top:16px;border:1px solid #e0e0e0;border-radius:8px;overflow:hidden;">
+      <summary style="padding:12px 16px;background:#f7f6f3;font-size:12px;font-weight:700;color:#333;cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px;">
+        <span style="display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;background:#5B9BD5;color:#fff;border-radius:50%;font-size:11px;font-weight:900;flex-shrink:0;">▶</span>
+        コラボ商品実績（FY24〜FY26）
+      </summary>
+      <div style="padding:16px;display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+
+        <!-- FY24: Mirafeel -->
+        <div style="background:#fafafa;border:1px solid #e8e8e8;border-radius:8px;overflow:hidden;">
+          <img src="https://raw.githubusercontent.com/kazuyukikonuma/260424for-japanese-colleague/main/image_008.png" style="width:100%;height:160px;object-fit:contain;background:#f7f6f3;display:block;" alt="Mirafeel">
+          <div style="padding:12px;">
+            <div style="font-size:9px;font-weight:700;letter-spacing:.12em;color:#888;margin-bottom:4px;">FY24</div>
+            <div style="font-size:12px;font-weight:700;color:#333;margin-bottom:4px;">Mirafeel 日本製紙おむつ</div>
+            <div style="font-size:14px;color:#555;line-height:1.6;">ポストパンパース戦略商品。巧虎IPを活用した台湾向け日本品質おむつ。</div>
+          </div>
+        </div>
+
+        <!-- FY25: Pixsee -->
+        <div style="background:#fafafa;border:1px solid #e8e8e8;border-radius:8px;overflow:hidden;">
+          <img src="https://raw.githubusercontent.com/kazuyukikonuma/260424for-japanese-colleague/main/image_009.png" style="width:100%;height:160px;object-fit:contain;background:#f7f6f3;display:block;" alt="Pixsee Wonders">
+          <div style="padding:12px;">
+            <div style="font-size:9px;font-weight:700;letter-spacing:.12em;color:#888;margin-bottom:4px;">FY25</div>
+            <div style="font-size:12px;font-weight:700;color:#333;margin-bottom:4px;">Pixsee Wonders 巧虎生活探索套組</div>
+            <div style="font-size:14px;color:#555;line-height:1.6;">Pixsee社（iF設計賞受賞チーム）×巧虎の知育IoTセット。スマートカメラ＋ぬいぐるみ。</div>
+          </div>
+        </div>
+
+        <!-- FY26: AI巧虎 -->
+        <div style="background:#fafafa;border:1.5px dashed #c0392b;border-radius:8px;overflow:hidden;">
+          <img src="https://raw.githubusercontent.com/kazuyukikonuma/260424for-japanese-colleague/main/image_010.png" style="width:100%;height:160px;object-fit:contain;background:#f7f6f3;display:block;" alt="AI巧虎">
+          <div style="padding:12px;">
+            <div style="display:flex;align-items:center;gap:6px;margin-bottom:4px;">
+              <span style="font-size:9px;font-weight:700;letter-spacing:.12em;color:#888;">FY26（進行中）</span>
+              <span style="font-size:9px;font-weight:700;background:#c0392b;color:#fff;padding:1px 6px;border-radius:3px;">交涉中</span>
+            </div>
+            <div style="font-size:12px;font-weight:700;color:#333;margin-bottom:4px;">AI巧虎（ライセンス）— KKカンパニー</div>
+            <div style="font-size:14px;color:#555;line-height:1.6;">巧虎AIキャラクターを活用した対話型教育アプリ。台湾市場向けライセンス交渉中。</div>
+          </div>
+        </div>
+
+        <!-- FY26: ベビーフード -->
+        <div style="background:#fafafa;border:1.5px dashed #aaa;border-radius:8px;overflow:hidden;">
+          <img src="https://raw.githubusercontent.com/kazuyukikonuma/260424for-japanese-colleague/main/image_011.png" style="width:100%;height:160px;object-fit:contain;background:#f7f6f3;display:block;" alt="巧虎ベビーフード">
+          <div style="padding:12px;">
+            <div style="display:flex;align-items:center;gap:6px;margin-bottom:4px;">
+              <span style="font-size:9px;font-weight:700;letter-spacing:.12em;color:#888;">FY26（未確定）</span>
+              <span style="font-size:9px;font-weight:700;background:#aaa;color:#fff;padding:1px 6px;border-radius:3px;">検討中</span>
+            </div>
+            <div style="font-size:12px;font-weight:700;color:#333;margin-bottom:4px;">巧虎ベビーフード</div>
+            <div style="font-size:14px;color:#555;line-height:1.6;">日本本社ライセンス商品の台湾市場導入。巧虎IPによるベビーフードカテゴリー開拓。</div>
+          </div>
+        </div>
+
+      </div>
+    </details>
+    </div>
+
+    <!-- ❶-2 新マーケ基盤 -->
+    <div>
+      <div style="font-size:16px;font-weight:700;color:#333;margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid #e0e0e0;">❶-2　新マーケ基盤の成長・充実</div>
+      <div style="font-size:12px;color:#555;line-height:1.8;margin-bottom:12px;">全システムデータの統合を通じて、マーケティング活動と売上の因果関係を可視化・分析し、成果創出に寄与する施策の優先順位を明確化する。継続的な改善サイクルを確立し、売上拡大を図る。</div>
+      <div style="font-size:15px;line-height:2.0;color:#333;">
+        ・LINE会員の量的・質的拡大<br>
+        ・月齢別商品提案（シナリオ自動化）の拡充<br>
+        ・クロスセル拡大（リマーケ＆電話リスト作成）<br>
+        ・購入候補者の特定システムの確立
+      </div>
+
+      <!-- LTVデータ -->
+      <div style="margin-top:20px;padding-top:16px;border-top:1px solid #e0e0e0;">
+        <div style="font-size:11px;font-weight:700;color:#555;letter-spacing:.1em;margin-bottom:16px;">複数購買がLTVを引き上げる——データで見る根拠</div>
+
+        <!-- KPI帯（5項目・元T9完全再現） -->
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:10px;margin-bottom:16px;">
+          <div style="background:#f7f6f3;border:1px solid #e2dfd8;border-radius:6px;padding:12px;">
+            <div style="font-size:11px;color:#6b6860;margin-bottom:4px;">HIGH顧客（上位20%）</div>
+            <div style="font-size:19px;font-weight:300;font-family:monospace;letter-spacing:-.02em;">2,533</div>
+            <div style="font-size:10.5px;color:#9c9a94;margin-top:3px;">人・平均LTV 11,633 NTD</div>
+          </div>
+          <div style="background:#f7f6f3;border:1px solid #e2dfd8;border-radius:6px;padding:12px;">
+            <div style="font-size:11px;color:#6b6860;margin-bottom:4px;">交叉販售率</div>
+            <div style="font-size:19px;font-weight:300;font-family:monospace;letter-spacing:-.02em;">24.6%</div>
+            <div style="font-size:10.5px;color:#9c9a94;margin-top:3px;">複数事業購買（3,110人）</div>
+          </div>
+          <div style="background:#f7f6f3;border:1px solid #e2dfd8;border-radius:6px;padding:12px;">
+            <div style="font-size:11px;color:#6b6860;margin-bottom:4px;">TM×LINE綁定 占比</div>
+            <div style="font-size:19px;font-weight:300;font-family:monospace;letter-spacing:-.02em;">34.0%</div>
+            <div style="font-size:10.5px;color:#9c9a94;margin-top:3px;">TM×綁定（3,580人）</div>
+          </div>
+          <div style="background:#f7f6f3;border:1px solid #e2dfd8;border-radius:6px;padding:12px;">
+            <div style="font-size:11px;color:#6b6860;margin-bottom:4px;">多事業平均LTV</div>
+            <div style="font-size:19px;font-weight:300;font-family:monospace;letter-spacing:-.02em;color:#1d7a5f;">7,557 NTD</div>
+            <div style="font-size:10.5px;color:#9c9a94;margin-top:3px;">単一事業4,006 NTDの1.9倍</div>
+          </div>
+          <div style="background:#f7f6f3;border:1px solid #e2dfd8;border-radius:6px;padding:12px;">
+            <div style="font-size:11px;color:#6b6860;margin-bottom:4px;">6回以上×綁定 LTV</div>
+            <div style="font-size:19px;font-weight:300;font-family:monospace;letter-spacing:-.02em;color:#1d7a5f;">30,942 NTD</div>
+            <div style="font-size:10.5px;color:#9c9a94;margin-top:3px;">平均LTVの6.3倍</div>
+          </div>
+        </div>
+
+        <!-- 購買者LTV区段属性 -->
+        <div style="font-size:11px;font-weight:700;color:#555;letter-spacing:.08em;margin-bottom:10px;">購買者 LTV区段属性</div>
+        <div style="overflow-x:auto;margin-bottom:16px;">
+          <table style="width:100%;border-collapse:collapse;font-size:12px;">
+            <thead>
+              <tr>
+                <th style="font-size:11px;color:#9c9a94;font-weight:400;padding:6px 8px;border-bottom:1px solid #ccc9c0;text-align:left;min-width:120px;">区段</th>
+                <th style="font-size:11px;color:#9c9a94;font-weight:400;padding:6px 8px;border-bottom:1px solid #ccc9c0;text-align:right;">客戶数</th>
+                <th style="font-size:11px;color:#9c9a94;font-weight:400;padding:6px 8px;border-bottom:1px solid #ccc9c0;text-align:right;">平均LTV</th>
+                <th style="font-size:11px;color:#9c9a94;font-weight:400;padding:6px 8px;border-bottom:1px solid #ccc9c0;text-align:right;">LINE綁定率</th>
+                <th style="font-size:11px;color:#9c9a94;font-weight:400;padding:6px 8px;border-bottom:1px solid #ccc9c0;text-align:right;">リピート率</th>
+                <th style="font-size:11px;color:#9c9a94;font-weight:400;padding:6px 8px;border-bottom:1px solid #ccc9c0;text-align:right;">クロスセル率</th>
+                <th style="font-size:11px;color:#9c9a94;font-weight:400;padding:6px 8px;border-bottom:1px solid #ccc9c0;text-align:right;">TM比率</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="background:rgba(168,213,181,0.15);">
+                <td style="padding:6px 8px;border-bottom:1px solid #e2dfd8;"><span style="background:#B5EAD7;border-radius:4px;padding:2px 8px;font-weight:600;font-size:11px;">HIGH（前20%）</span></td>
+                <td style="padding:6px 8px;border-bottom:1px solid #e2dfd8;text-align:right;font-family:monospace;">2,533</td>
+                <td style="padding:6px 8px;border-bottom:1px solid #e2dfd8;text-align:right;font-family:monospace;font-weight:600;">11,633</td>
+                <td style="padding:6px 8px;border-bottom:1px solid #e2dfd8;text-align:right;">74%</td>
+                <td style="padding:6px 8px;border-bottom:1px solid #e2dfd8;text-align:right;">55%</td>
+                <td style="padding:6px 8px;border-bottom:1px solid #e2dfd8;text-align:right;">49%</td>
+                <td style="padding:6px 8px;border-bottom:1px solid #e2dfd8;text-align:right;">39%</td>
+              </tr>
+              <tr style="background:rgba(245,212,160,0.15);">
+                <td style="padding:6px 8px;border-bottom:1px solid #e2dfd8;"><span style="background:#FFF4A3;border-radius:4px;padding:2px 8px;font-weight:600;font-size:11px;">MID（中位30%）</span></td>
+                <td style="padding:6px 8px;border-bottom:1px solid #e2dfd8;text-align:right;font-family:monospace;">3,788</td>
+                <td style="padding:6px 8px;border-bottom:1px solid #e2dfd8;text-align:right;font-family:monospace;">5,122</td>
+                <td style="padding:6px 8px;border-bottom:1px solid #e2dfd8;text-align:right;">67%</td>
+                <td style="padding:6px 8px;border-bottom:1px solid #e2dfd8;text-align:right;">21%</td>
+                <td style="padding:6px 8px;border-bottom:1px solid #e2dfd8;text-align:right;">33%</td>
+                <td style="padding:6px 8px;border-bottom:1px solid #e2dfd8;text-align:right;">36%</td>
+              </tr>
+              <tr style="background:rgba(245,165,160,0.1);">
+                <td style="padding:6px 8px;border-bottom:none;"><span style="background:#F5C5B5;border-radius:4px;padding:2px 8px;font-weight:600;font-size:11px;">LOW（後50%）</span></td>
+                <td style="padding:6px 8px;border-bottom:none;text-align:right;font-family:monospace;">6,320</td>
+                <td style="padding:6px 8px;border-bottom:none;text-align:right;font-family:monospace;">2,028</td>
+                <td style="padding:6px 8px;border-bottom:none;text-align:right;">59%</td>
+                <td style="padding:6px 8px;border-bottom:none;text-align:right;">3%</td>
+                <td style="padding:6px 8px;border-bottom:none;text-align:right;">10%</td>
+                <td style="padding:6px 8px;border-bottom:none;text-align:right;">21%</td>
+              </tr>
+            </tbody>
+          </table>
+          <div style="font-size:10px;color:#9c9a94;margin-top:6px;">HIGH = 前20%（LTV 7,099 NTD以上）/ LOW = 後50%以下</div>
+        </div>
+
+        <!-- 事業購買パターングラフ（元T9完全再現・平均LTV＋客戶数2軸） -->
+        <div style="font-size:11px;font-weight:700;color:#555;letter-spacing:.08em;margin-bottom:10px;">事業購買模式（交叉販售結構）</div>
+        <div style="position:relative;height:260px;"><canvas id="c-ltv-pattern"></canvas></div>
+        <div style="font-size:11px;color:#6b6860;margin-top:8px;">複数事業を購買した顧客のLTVは単一事業の1.9倍。學習+周邊の組み合わせが最大収益源。</div>
+
+        <div style="margin-top:16px;text-align:center;">
+          <a href="https://fy25-annual-report.netlify.app" target="_blank"
+             style="display:inline-flex;align-items:center;gap:10px;padding:12px 28px;background:#1a1a1a;color:#fff;border-radius:8px;text-decoration:none;font-weight:700;font-size:13px;letter-spacing:.04em;">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M7 2H3a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V9M9 1h6v6M15 1 7.5 8.5" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            FY25詳細ダッシュボード
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DBの可視化とターゲット特定 -->
+  <div class="card" style="margin-bottom:16px;border-left:4px solid #5B9BD5;">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;">
+      <div style="width:36px;height:36px;border-radius:50%;background:#5B9BD5;color:#fff;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900;flex-shrink:0;">+</div>
+      <div style="font-size:18px;font-weight:800;color:#5B9BD5;">DBの可視化と今最も購入に近いターゲットの特定</div>
+    </div>
+
+    <!-- タブ切り替え -->
+    <div style="display:flex;gap:6px;margin-bottom:16px;">
+      <button id="bcl-tab-db" onclick="showBclTab('db')" style="padding:7px 16px;font-size:12px;font-weight:700;border:1.5px solid #5B9BD5;border-radius:4px;background:#5B9BD5;color:#fff;cursor:pointer;font-family:inherit;">DB現況</button>
+      <button id="bcl-tab-acq" onclick="showBclTab('acq')" style="padding:7px 16px;font-size:12px;font-weight:700;border:1.5px solid #e0e0e0;border-radius:4px;background:#f5f5f5;color:#555;cursor:pointer;font-family:inherit;">獲得分析</button>
+    </div>
+
+    <!-- DB現況パネル -->
+    <div id="bcl-panel-db">
+      <!-- KPI帯 -->
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-bottom:16px;">
+        <div style="background:#f7f6f3;border:1px solid #e2dfd8;border-radius:6px;padding:12px;">
+          <div style="font-size:11px;color:#6b6860;margin-bottom:4px;">DB総数</div>
+          <div style="font-size:22px;font-weight:300;font-family:monospace;">212.1K</div>
+        </div>
+        <div style="background:#f7f6f3;border:1px solid #e2dfd8;border-radius:6px;padding:12px;">
+          <div style="font-size:11px;color:#6b6860;margin-bottom:4px;">有効BCL</div>
+          <div style="font-size:22px;font-weight:300;font-family:monospace;color:#1d7a5f;">148.3K</div>
+          <div style="font-size:10px;color:#9c9a94;margin-top:2px;">70%</div>
+        </div>
+        <div style="background:#f7f6f3;border:1px solid #e2dfd8;border-radius:6px;padding:12px;">
+          <div style="font-size:11px;color:#6b6860;margin-bottom:4px;">無効BCL（封鎖）</div>
+          <div style="font-size:22px;font-weight:300;font-family:monospace;color:#b83a2e;">63.7K</div>
+          <div style="font-size:10px;color:#9c9a94;margin-top:2px;">30%</div>
+        </div>
+        <div style="background:#f7f6f3;border:1px solid #e2dfd8;border-radius:6px;padding:12px;">
+          <div style="font-size:11px;color:#6b6860;margin-bottom:4px;">最新月 新規有効</div>
+          <div style="font-size:22px;font-weight:300;font-family:monospace;color:#1d7a5f;">4,263</div>
+          <div style="font-size:10px;color:#9c9a94;margin-top:2px;">2026/03</div>
+        </div>
+        <div style="background:#f7f6f3;border:1px solid #e2dfd8;border-radius:6px;padding:12px;">
+          <div style="font-size:11px;color:#6b6860;margin-bottom:4px;">SS+S+AA（現在月齢）</div>
+          <div style="font-size:22px;font-weight:300;font-family:monospace;">28,220</div>
+          <div style="font-size:10px;color:#9c9a94;margin-top:2px;">19%</div>
+        </div>
+      </div>
+
+      <!-- 出生年別カード -->
+      <div style="font-size:11px;font-weight:700;color:#555;margin-bottom:10px;">出生年別 有効BCL（2026/04基準）</div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;">
+        <div style="background:#F5D4A0;border-radius:8px;padding:10px 14px;flex:1;min-width:100px;">
+          <div style="font-size:10px;color:#888;">2026年生 <span style="background:#fff;border-radius:10px;padding:1px 5px;font-size:9px;font-weight:700;">A孕期</span></div>
+          <div style="font-size:20px;font-weight:300;font-family:monospace;">3.3K</div>
+          <div style="font-size:10px;color:#9c9a94;">2.26%</div>
+        </div>
+        <div style="background:#A8C5DA;border-radius:8px;padding:10px 14px;flex:1;min-width:100px;">
+          <div style="font-size:10px;color:#888;">2025年生 <span style="background:#fff;border-radius:10px;padding:1px 5px;font-size:9px;font-weight:700;">S/SS</span></div>
+          <div style="font-size:20px;font-weight:300;font-family:monospace;">6.3K</div>
+          <div style="font-size:10px;color:#9c9a94;">4.27%</div>
+        </div>
+        <div style="background:#B5EAD7;border-radius:8px;padding:10px 14px;flex:1;min-width:100px;">
+          <div style="font-size:10px;color:#888;">2024年生 <span style="background:#fff;border-radius:10px;padding:1px 5px;font-size:9px;font-weight:700;">S</span></div>
+          <div style="font-size:20px;font-weight:300;font-family:monospace;">11.2K</div>
+          <div style="font-size:10px;color:#9c9a94;">7.57%</div>
+        </div>
+        <div style="background:#B5EAD7;border-radius:8px;padding:10px 14px;flex:1;min-width:100px;">
+          <div style="font-size:10px;color:#888;">2023年生 <span style="background:#fff;border-radius:10px;padding:1px 5px;font-size:9px;font-weight:700;">AA</span></div>
+          <div style="font-size:20px;font-weight:300;font-family:monospace;">12.2K</div>
+          <div style="font-size:10px;color:#9c9a94;">8.23%</div>
+        </div>
+        <div style="background:#FFF4A3;border-radius:8px;padding:10px 14px;flex:1;min-width:100px;">
+          <div style="font-size:10px;color:#888;">2022年生 <span style="background:#fff;border-radius:10px;padding:1px 5px;font-size:9px;font-weight:700;">A</span></div>
+          <div style="font-size:20px;font-weight:300;font-family:monospace;">21.3K</div>
+          <div style="font-size:10px;color:#9c9a94;">14.33%</div>
+        </div>
+        <div style="background:#FFF4A3;border-radius:8px;padding:10px 14px;flex:1;min-width:100px;">
+          <div style="font-size:10px;color:#888;">2021年生 <span style="background:#fff;border-radius:10px;padding:1px 5px;font-size:9px;font-weight:700;">A</span></div>
+          <div style="font-size:20px;font-weight:300;font-family:monospace;">24.0K</div>
+          <div style="font-size:10px;color:#9c9a94;">16.18%</div>
+        </div>
+        <div style="background:#D4C5B0;border-radius:8px;padding:10px 14px;flex:1;min-width:100px;">
+          <div style="font-size:10px;color:#888;">2020年生 <span style="background:#fff;border-radius:10px;padding:1px 5px;font-size:9px;font-weight:700;">B</span></div>
+          <div style="font-size:20px;font-weight:300;font-family:monospace;">23.1K</div>
+          <div style="font-size:10px;color:#9c9a94;">15.57%</div>
+        </div>
+      </div>
+
+      <!-- ドーナツ＋テーブル -->
+      <div class="g2">
+        <div>
+          <div style="font-size:14px;font-weight:700;color:#555;margin-bottom:8px;">月齢分布 全体構成比（現在月齢）</div>
+          <div style="font-size:10px;color:#9c9a94;margin-bottom:8px;">2026/04時点・出生年月から算出</div>
+          <div style="position:relative;height:220px;"><canvas id="c-bcl-age7-p08"></canvas></div>
+        </div>
+        <div>
+          <div style="font-size:14px;font-weight:700;color:#555;margin-bottom:8px;">月齢バケット × 件数</div>
+          <table style="width:100%;border-collapse:collapse;font-size:12px;">
+            <thead>
+              <tr>
+                <th style="font-size:14px;color:#9c9a94;font-weight:400;padding:7px 10px;border-bottom:1px solid #ccc9c0;text-align:left;">ランク</th>
+                <th style="font-size:14px;color:#9c9a94;font-weight:400;padding:7px 10px;border-bottom:1px solid #ccc9c0;text-align:left;">月齢</th>
+                <th style="font-size:11px;color:#9c9a94;font-weight:400;padding:5px 8px;border-bottom:1px solid #ccc9c0;text-align:right;">件数</th>
+                <th style="font-size:11px;color:#9c9a94;font-weight:400;padding:5px 8px;border-bottom:1px solid #ccc9c0;text-align:right;">構成比</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td style="padding:5px 8px;border-bottom:1px solid #e2dfd8;"><span style="background:#F5D4A0;border-radius:3px;padding:1px 6px;font-size:10px;font-weight:700;">A</span></td><td style="padding:5px 8px;border-bottom:1px solid #e2dfd8;">A 孕期</td><td style="padding:5px 8px;border-bottom:1px solid #e2dfd8;text-align:right;font-family:monospace;">1,603</td><td style="padding:5px 8px;border-bottom:1px solid #e2dfd8;text-align:right;color:#1d7a5f;font-weight:600;">1.1%</td></tr>
+              <tr><td style="padding:5px 8px;border-bottom:1px solid #e2dfd8;"><span style="background:#A8C5DA;border-radius:3px;padding:1px 6px;font-size:10px;font-weight:700;">S</span></td><td style="padding:5px 8px;border-bottom:1px solid #e2dfd8;">S 0-6M</td><td style="padding:5px 8px;border-bottom:1px solid #e2dfd8;text-align:right;font-family:monospace;">3,180</td><td style="padding:5px 8px;border-bottom:1px solid #e2dfd8;text-align:right;color:#1d7a5f;font-weight:600;">2.1%</td></tr>
+              <tr><td style="padding:5px 8px;border-bottom:1px solid #e2dfd8;"><span style="background:#AED6F1;border-radius:3px;padding:1px 6px;font-size:10px;font-weight:700;">SS</span></td><td style="padding:5px 8px;border-bottom:1px solid #e2dfd8;">SS 7-12M</td><td style="padding:5px 8px;border-bottom:1px solid #e2dfd8;text-align:right;font-family:monospace;">2,687</td><td style="padding:5px 8px;border-bottom:1px solid #e2dfd8;text-align:right;color:#1d7a5f;font-weight:600;">1.8%</td></tr>
+              <tr><td style="padding:5px 8px;border-bottom:1px solid #e2dfd8;"><span style="background:#B5EAD7;border-radius:3px;padding:1px 6px;font-size:10px;font-weight:700;">S</span></td><td style="padding:5px 8px;border-bottom:1px solid #e2dfd8;">S 13-24M</td><td style="padding:5px 8px;border-bottom:1px solid #e2dfd8;text-align:right;font-family:monospace;">10,723</td><td style="padding:5px 8px;border-bottom:1px solid #e2dfd8;text-align:right;font-weight:600;">7.2%</td></tr>
+              <tr><td style="padding:5px 8px;border-bottom:1px solid #e2dfd8;"><span style="background:#B5EAD7;border-radius:3px;padding:1px 6px;font-size:10px;font-weight:700;">AA</span></td><td style="padding:5px 8px;border-bottom:1px solid #e2dfd8;">AA 25-36M</td><td style="padding:5px 8px;border-bottom:1px solid #e2dfd8;text-align:right;font-family:monospace;">11,630</td><td style="padding:5px 8px;border-bottom:1px solid #e2dfd8;text-align:right;font-weight:600;">7.8%</td></tr>
+              <tr><td style="padding:5px 8px;border-bottom:1px solid #e2dfd8;"><span style="background:#FFF4A3;border-radius:3px;padding:1px 6px;font-size:10px;font-weight:700;">A</span></td><td style="padding:5px 8px;border-bottom:1px solid #e2dfd8;">A 37-60M</td><td style="padding:5px 8px;border-bottom:1px solid #e2dfd8;text-align:right;font-family:monospace;">42,860</td><td style="padding:5px 8px;border-bottom:1px solid #e2dfd8;text-align:right;color:#96600a;font-weight:600;">28.9%</td></tr>
+              <tr><td style="padding:5px 8px;"><span style="background:#D4C5B0;border-radius:3px;padding:1px 6px;font-size:10px;font-weight:700;">B</span></td><td style="padding:5px 8px;">B 61M+</td><td style="padding:5px 8px;text-align:right;font-family:monospace;">75,666</td><td style="padding:5px 8px;text-align:right;color:#b83a2e;font-weight:600;">51.0%</td></tr>
+              <tr style="background:#f7f6f3;font-weight:700;border-top:1.5px solid #ccc9c0;">
+                <td colspan="2" style="padding:6px 8px;">合計</td>
+                <td style="padding:6px 8px;text-align:right;font-family:monospace;">148,349</td>
+                <td style="padding:6px 8px;text-align:right;">100.0%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- 獲得分析パネル -->
+    <div id="bcl-panel-acq" style="display:none;">
+      <!-- KPI帯 -->
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin-bottom:16px;">
+        <div style="background:#f7f6f3;border:1px solid #e2dfd8;border-radius:6px;padding:12px;">
+          <div style="font-size:11px;color:#6b6860;margin-bottom:4px;">FY25 新規有効BCL合計</div>
+          <div style="font-size:22px;font-weight:300;font-family:monospace;">30,206</div>
+          <div style="font-size:10px;color:#9c9a94;margin-top:2px;">人（24/04〜25/03）</div>
+        </div>
+        <div style="background:#f7f6f3;border:1px solid #e2dfd8;border-radius:6px;padding:12px;">
+          <div style="font-size:11px;color:#6b6860;margin-bottom:4px;">FY25 封鎖率（全体）</div>
+          <div style="font-size:22px;font-weight:300;font-family:monospace;color:#b83a2e;">32.3%</div>
+          <div style="font-size:10px;color:#9c9a94;margin-top:2px;">全管道ベース</div>
+        </div>
+        <div style="background:#f7f6f3;border:1px solid #e2dfd8;border-radius:6px;padding:12px;">
+          <div style="font-size:11px;color:#6b6860;margin-bottom:4px;">最低封鎖率管道</div>
+          <div style="font-size:22px;font-weight:300;font-family:monospace;color:#1d7a5f;">SHOPLINE</div>
+          <div style="font-size:10px;color:#9c9a94;margin-top:2px;">6.4%</div>
+        </div>
+      </div>
+
+      <!-- 月次 新規BCL登録数グラフ -->
+      <div style="margin-bottom:16px;">
+        <div style="font-size:14px;font-weight:700;color:#555;margin-bottom:8px;">月次 新規BCL登録数</div>
+        <div style="position:relative;height:260px;"><canvas id="c-bcl-new-p08"></canvas></div>
+        <div style="font-size:14px;color:#9c9a94;margin-top:6px;">有効会員（青）＋無効会員（ピンク）・2024/04〜</div>
+      </div>
+
+      <!-- 月齢分布×月次グラフ -->
+      <div>
+        <div style="font-size:14px;font-weight:700;color:#555;margin-bottom:8px;">月齢分布 × 月次（有効会員）</div>
+        <div style="position:relative;height:260px;"><canvas id="c-bcl-cross-p08"></canvas></div>
+        <div style="font-size:14px;color:#9c9a94;margin-top:6px;">登録時月齢（BCL活化開始時点）・現在月齢とは異なる</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ❷ コストコントロール -->
+  <div class="card" style="margin-bottom:16px;border-left:4px solid #6EC4A7;">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;">
+      <div style="width:36px;height:36px;border-radius:50%;background:#6EC4A7;color:#fff;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900;flex-shrink:0;">❷</div>
+      <div style="font-size:18px;font-weight:800;color:#6EC4A7;">コストコントロール</div>
+    </div>
+
+    <div class="g2">
+      <!-- ❷-1 事業コスト -->
+      <div>
+        <div style="font-size:16px;font-weight:700;color:#333;margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid #e0e0e0;">❷-1　事業コスト</div>
+        <div style="font-size:11px;font-weight:700;color:#555;margin:10px 0 4px;">製造原価</div>
+        <div style="font-size:15px;line-height:2.0;color:#333;">
+          ・他企業コラボによる在庫リスク圧縮<br>
+          ・AI活用による素材の内製化・外注削減<br>
+          ・<span style="color:#c0392b;">本社との共同製作による単価コントロール</span>
+        </div>
+        <div style="font-size:11px;font-weight:700;color:#555;margin:12px 0 4px;">販売費</div>
+        <div style="font-size:15px;line-height:2.0;color:#333;">
+          ・広告依存脱却 → DB充実<br>
+          ・AI活用による内製化<br>
+          　メタ広告社内運用（代理店コスト削減）<br>
+          　イベント・商品LPの内製化
+        </div>
+      </div>
+
+      <!-- ❷-2 共通コスト -->
+      <div>
+        <div style="font-size:16px;font-weight:700;color:#333;margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid #e0e0e0;">❷-2　共通コスト</div>
+        <div style="font-size:11px;font-weight:700;color:#555;margin:10px 0 4px;">システム開発・管理</div>
+        <div style="font-size:15px;line-height:2.0;color:#333;">
+          ・新販売基盤の内製化<br>
+          　（SaaSツール統合・自社開発・スクラッチ開発禁止）<br>
+          ・システム管理の完全内製化<br>
+          　（外部エンジニアへの委託終了）<br>
+          ・データセンターの社内運用<br>
+          　（外部IDC内サーバーの撤去）
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- 09 巧虎ブランド -->
+<!-- ===== NEW SECTION: 顧客解像度×LC8T再成長エンジン ===== -->
+<div class="page" id="page-10">
+  <div class="sec-tag">
+    <span class="sec-num" style="background:#1a1a1a;color:#fff;">10</span>顧客解像度とLC8T再成長エンジン
+  </div>
+
+  <div class="keymsg">
+    <div class="keymsg-txt">26.9万人のDBを解剖した。<br>「誰が買うか」が、データで見えている。</div>
+    <div class="keymsg-sub">月刊講座終了後も顧客データは蓄積され続けた。LINE ID・月齢タグ・購買履歴・行動スコアを掛け合わせることで、台北支社は個々の顧客の「購買確率」を定量的に把握できる段階に到達している。少子化で市場が縮む中でも、LTV最大化による再成長はデータが証明している。</div>
+  </div>
+
+  <!-- KPI帯：DBの全体像 -->
+  <div class="kpi-strip" style="margin-bottom:24px;">
+    <div class="kpi-box" style="background:#f5f5f5;border:1.5px solid #e0e0e0;">
+      <div class="kpi-lbl" style="color:#555;">顧客DB総数</div>
+      <div class="kpi-val" style="color:#1a1a1a;font-size:26px;">26.9万人</div>
+      <div class="kpi-nte">6年間の購買・行動データ蓄積</div>
+    </div>
+    <div class="kpi-box" style="background:#f5f5f5;border:1.5px solid #e0e0e0;">
+      <div class="kpi-lbl" style="color:#555;">周邊商品購買率（全体）</div>
+      <div class="kpi-val" style="color:#1a1a1a;font-size:26px;">19.7%</div>
+      <div class="kpi-nte">残り80.3%が未転換の潜在層</div>
+    </div>
+    <div class="kpi-box" style="background:#f5f5f5;border:1.5px solid #e0e0e0;">
+      <div class="kpi-lbl" style="color:#555;">有効会員 購買率</div>
+      <div class="kpi-val" style="color:#1a1a1a;font-size:26px;">21.5%</div>
+      <div class="kpi-nte">vs 無効会員 16.3%</div>
+    </div>
+    <div class="kpi-box" style="background:#f5f5f5;border:1.5px solid #e0e0e0;">
+      <div class="kpi-lbl" style="color:#555;">最有望未購買層</div>
+      <div class="kpi-val" style="color:#1a1a1a;font-size:26px;">1.9万人</div>
+      <div class="kpi-nte">有効会員×タグ深い層・即アプローチ可能</div>
+    </div>
+  </div>
+
+  <!-- 2カラム：タグ数×購買率 ＆ 購買確率スコア分布 -->
+  <div class="g2" style="margin-bottom:24px;">
+
+    <!-- 左：タグ数×購買率（リデザイン） -->
+    <div class="card">
+      <div style="margin-bottom:6px;">
+        <div style="font-size:17px;font-weight:800;color:#1a1a1a;line-height:1.35;">タグ30個が、購買率を2倍にする<span style="font-size:11px;font-weight:400;color:#999;margin-left:8px;">LINEタグ数 × 購買率</span></div>
+      </div>
+      <!-- ミニKPI：before/after -->
+      <div style="display:flex;gap:8px;margin-bottom:14px;align-items:center;">
+        <div style="flex:1;padding:12px 14px;background:#f5f5f5;border-radius:8px;text-align:center;">
+          <div style="font-size:9px;font-weight:700;letter-spacing:.1em;color:#999;margin-bottom:4px;">タグ1〜5個</div>
+          <div style="font-size:24px;font-weight:800;color:#aaa;">17.6%</div>
+        </div>
+        <div style="font-size:22px;color:#ccc;font-weight:300;">→</div>
+        <div style="flex:1;padding:12px 14px;background:#1a1a1a;border-radius:8px;text-align:center;">
+          <div style="font-size:9px;font-weight:700;letter-spacing:.1em;color:#aaa;margin-bottom:4px;">タグ31〜50個</div>
+          <div style="font-size:24px;font-weight:800;color:#fff;">37.0%</div>
+        </div>
+        <div style="font-size:13px;font-weight:900;color:#1a1a1a;background:#f0f0f0;padding:8px 12px;border-radius:8px;text-align:center;line-height:1.3;">×<span style="font-size:20px;">2.1</span><br><span style="font-size:9px;font-weight:400;color:#666;">倍</span></div>
+      </div>
+      <div style="height:180px;"><canvas id="c-tag-cvr"></canvas></div>
+      <div style="margin-top:12px;padding:10px 14px;background:#f5f5f5;border-radius:6px;font-size:11px;color:#333;line-height:1.7;">
+        <strong>LC8Tの仕事はここ：</strong>Super8のシナリオで1人あたりのタグを30個超えに引き上げること。購買率は自然に倍になる。
+      </div>
+    </div>
+
+    <!-- 右：購買確率スコア分布（横棒） -->
+    <div class="card">
+      <div class="ctitle">未購買者21.8万人の購買確率スコア分布</div>
+      <div class="ch" style="height:220px;"><canvas id="c-score-dist"></canvas></div>
+      <div class="ins" style="background:#f5f5f5;color:#333;margin-top:12px;">
+        ロジスティック回帰で算出した購買確率スコア（巧連智を除くアクション可能変数のみ）。<strong>確率30%以上の層</strong>は有効会員率99%・平均タグ15個超の高エンゲージメント層。Super8で絞り込み、TMで押し込む対象が既にデータで特定できる。
+      </div>
+    </div>
+  </div>
+
+  <!-- 購買を決める変数：オッズ比ビジュアル（アクション可能変数のみ） -->
+  <div class="card" style="margin-bottom:24px;">
+    <div class="ctitle">購買確率に影響する変数 ― 今、動かせる要因だけを見る</div>
+    <div style="font-size:11px;color:#999;margin-bottom:14px;">※「巧連智訂戶」は2025年3月廃刊。新規加入ゼロのため施策変数から除外。アクション可能な変数のみで分析。</div>
+    <div style="display:flex;flex-direction:column;gap:10px;margin-top:4px;">
+
+      <!-- 全管道 -->
+      <div style="display:flex;align-items:center;gap:12px;">
+        <div style="width:148px;font-size:11px;font-weight:700;color:#333;flex-shrink:0;">来源：全管道<br><span style="font-size:10px;font-weight:400;color:#999;">BCL公式ルートで入会</span></div>
+        <div style="flex:1;background:#f0f0f0;border-radius:4px;height:28px;position:relative;overflow:hidden;">
+          <div style="position:absolute;left:0;top:0;height:100%;width:88%;background:#1a1a1a;border-radius:4px;"></div>
+        </div>
+        <div style="width:72px;text-align:right;font-size:13px;font-weight:800;color:#1a1a1a;">7.0倍</div>
+        <div style="width:140px;font-size:10px;color:#666;">購買率 22.2%<br>23.4万人が該当</div>
+      </div>
+
+      <!-- 有効会員 -->
+      <div style="display:flex;align-items:center;gap:12px;">
+        <div style="width:148px;font-size:11px;font-weight:700;color:#333;flex-shrink:0;">有効会員<br><span style="font-size:10px;font-weight:400;color:#999;">LINEブロックなし</span></div>
+        <div style="flex:1;background:#f0f0f0;border-radius:4px;height:28px;position:relative;overflow:hidden;">
+          <div style="position:absolute;left:0;top:0;height:100%;width:17%;background:#5B9BD5;border-radius:4px;"></div>
+        </div>
+        <div style="width:72px;text-align:right;font-size:13px;font-weight:800;color:#5B9BD5;">1.24倍</div>
+        <div style="width:140px;font-size:10px;color:#666;">有効21.5% vs 無効16.3%</div>
+      </div>
+
+      <!-- 自辦BCL -->
+      <div style="display:flex;align-items:center;gap:12px;">
+        <div style="width:148px;font-size:11px;font-weight:700;color:#333;flex-shrink:0;">自辦BCL<br><span style="font-size:10px;font-weight:400;color:#999;">自社主導で獲得</span></div>
+        <div style="flex:1;background:#f0f0f0;border-radius:4px;height:28px;position:relative;overflow:hidden;">
+          <div style="position:absolute;left:0;top:0;height:100%;width:12%;background:#6EC4A7;border-radius:4px;"></div>
+        </div>
+        <div style="width:72px;text-align:right;font-size:13px;font-weight:800;color:#6EC4A7;">1.16倍</div>
+        <div style="width:140px;font-size:10px;color:#666;">購買率 21.0%<br>vs 異業1.0%</div>
+      </div>
+
+      <!-- タグ1個 -->
+      <div style="display:flex;align-items:center;gap:12px;">
+        <div style="width:148px;font-size:11px;font-weight:700;color:#333;flex-shrink:0;">LINEタグ数（+1個）<br><span style="font-size:10px;font-weight:400;color:#999;">累積効果が大きい</span></div>
+        <div style="flex:1;background:#f0f0f0;border-radius:4px;height:28px;position:relative;overflow:hidden;">
+          <div style="position:absolute;left:0;top:0;height:100%;width:3%;background:#F0CC6A;border-radius:4px;"></div>
+        </div>
+        <div style="width:72px;text-align:right;font-size:13px;font-weight:800;color:#b8860b;">1.03倍</div>
+        <div style="width:140px;font-size:10px;color:#666;">31-50個帯で37.0%<br>（1-5個帯比 +19pt）</div>
+      </div>
+
+    </div>
+    <div class="ins" style="background:#f5f5f5;color:#333;margin-top:16px;">
+      <strong>示唆：</strong>「全管道（自社BCL公式ルート）で入会させ、タグを積み上げる」ことが購買確率を最も確実に上げる。これはLCの「L」でBCLを増やし、「8」でタグを深める、LC8Tそのものの設計思想と完全に一致している。
+    </div>
+  </div>
+
+  <!-- LC8T再成長エンジン：フロー図 -->
+  <div class="card" style="margin-bottom:24px;">
+    <div class="ctitle">LC8T ― 少子化でも再成長できる仕組みの全体像</div>
+
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1.5px solid #e0e0e0;border-radius:10px;overflow:hidden;margin-bottom:16px;">
+
+      <!-- L -->
+      <div style="padding:20px 16px;border-right:1.5px solid #e0e0e0;background:#fafafa;">
+        <div style="font-size:22px;font-weight:900;color:#5B9BD5;line-height:1;margin-bottom:4px;">L</div>
+        <div style="font-size:11px;font-weight:700;color:#333;margin-bottom:8px;">LINE BCL獲得</div>
+        <div style="font-size:14px;color:#666;line-height:1.75;">外部チャネルから<br>LINE友達登録へ誘導。<br>月齢タグを付与。<br><br>
+          <span style="background:#EBF5FB;color:#1a6394;border-radius:4px;padding:2px 6px;font-size:10px;font-weight:700;">現状：14.8万件<br>カバー率9.1%</span>
+        </div>
+      </div>
+
+      <!-- C -->
+      <div style="padding:20px 16px;border-right:1.5px solid #e0e0e0;background:#fafafa;">
+        <div style="font-size:22px;font-weight:900;color:#6EC4A7;line-height:1;margin-bottom:4px;">C</div>
+        <div style="font-size:11px;font-weight:700;color:#333;margin-bottom:8px;">コミュニティ関係深化</div>
+        <div style="font-size:14px;color:#666;line-height:1.75;">子育ての悩みを共有。<br>温度感のある接点で<br>信頼タグを積み上げる。<br><br>
+          <span style="background:#EAFAF1;color:#1e8449;border-radius:4px;padding:2px 6px;font-size:10px;font-weight:700;">タグ30個以上は<br>消費額7倍</span>
+        </div>
+      </div>
+
+      <!-- 8 -->
+      <div style="padding:20px 16px;border-right:1.5px solid #e0e0e0;background:#fafafa;">
+        <div style="font-size:22px;font-weight:900;color:#F0CC6A;line-height:1;margin-bottom:4px;">8</div>
+        <div style="font-size:11px;font-weight:700;color:#333;margin-bottom:8px;">Super8 MA配信</div>
+        <div style="font-size:14px;color:#666;line-height:1.75;">月齢×興味×行動タグで<br>シナリオを自動配信。<br>購物車放棄→即フォロー。<br><br>
+          <span style="background:#FEF9E7;color:#9a7d0a;border-radius:4px;padding:2px 6px;font-size:10px;font-weight:700;">購物車再行銷<br>累計NTD260万</span>
+        </div>
+      </div>
+
+      <!-- T -->
+      <div style="padding:20px 16px;background:#fafafa;">
+        <div style="font-size:22px;font-weight:900;color:#E87A8A;line-height:1;margin-bottom:4px;">T</div>
+        <div style="font-size:11px;font-weight:700;color:#333;margin-bottom:8px;">TEL クロージング</div>
+        <div style="font-size:14px;color:#666;line-height:1.75;">LINE点击ありの名単へ<br>専任スタッフが電話。<br>最終的な不安を解消し<br>成約を完了させる。<br><br>
+          <span style="background:#FDEDEC;color:#922b21;border-radius:4px;padding:2px 6px;font-size:10px;font-weight:700;">LINE点击あり→<br>応答率が有意に上昇</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;">
+      <div style="font-size:14px;color:#555;font-weight:700;">LINE ID増 → タグ深化 → 購買確率上昇 → LTV拡大</div>
+      <div style="font-size:20px;color:#ccc;">→</div>
+      <div style="font-size:14px;color:#555;font-weight:700;">SKU増 × BCL増</div>
+      <div style="font-size:20px;color:#ccc;">→</div>
+      <div style="font-size:13px;font-weight:900;color:#1a1a1a;background:#f0f0f0;padding:4px 14px;border-radius:6px;">少子化でも再成長</div>
+    </div>
+  </div>
+
+  <!-- FY26：攻めどころサマリー -->
+  <div class="card" style="border-left:4px solid #4A7CC7;">
+    <div style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#999;margin-bottom:16px;">FY26 データから見えた優先アクション</div>
+    <div class="g3">
+
+      <div style="padding:16px 18px;background:#fafafa;border-radius:8px;border-left:3px solid #5B9BD5;">
+        <div style="font-size:10px;font-weight:700;color:#5B9BD5;letter-spacing:.1em;margin-bottom:6px;">① 即効性</div>
+        <div style="font-size:13px;font-weight:700;color:#1a1a1a;margin-bottom:6px;">最有望層1.9万人への<br>Super8→TM集中</div>
+        <div style="font-size:11px;color:#666;line-height:1.65;">「全管道入会×有効会員×タグ15個以上」の高確率層。転換率20%で約3,800人の新規購買。SKU単価NTD3,499で試算+NTD1,330万の上積み余地。</div>
+      </div>
+
+      <div style="padding:16px 18px;background:#fafafa;border-radius:8px;border-left:3px solid #6EC4A7;">
+        <div style="font-size:10px;font-weight:700;color:#6EC4A7;letter-spacing:.1em;margin-bottom:6px;">② 中期</div>
+        <div style="font-size:13px;font-weight:700;color:#1a1a1a;margin-bottom:6px;">タグ10個未満の<br>10万人のタグ深化</div>
+        <div style="font-size:11px;color:#666;line-height:1.65;">DB内の10万人以上がタグ1〜10個帯。Super8シナリオでタグを20個以上に引き上げるだけで購買率は+7〜8%pt改善。BCL拡大よりROI高の可能性。</div>
+      </div>
+
+      <div style="padding:16px 18px;background:#fafafa;border-radius:8px;border-left:3px solid #F0CC6A;">
+        <div style="font-size:10px;font-weight:700;color:#b8860b;letter-spacing:.1em;margin-bottom:6px;">③ 構造</div>
+        <div style="font-size:13px;font-weight:700;color:#1a1a1a;margin-bottom:6px;">BCL件数を増やし<br>市場9%→20%へ</div>
+        <div style="font-size:11px;color:#666;line-height:1.65;">市場カバー率9.1%（14.8万件）から20%（32万件）への拡大目標。新規チャネル（YouTube→LINE転換、舞台劇購票者串接、Shopee顧客回収）の整備がLC8Tの上流基盤。</div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+<!-- ===== END NEW SECTION ===== -->
+
+<div class="page" id="page-11">
+  <div class="sec-tag">
+    <span class="sec-num" style="background:#333;color:#fff;">11</span>巧虎ブランドの集客力は健在
+  </div>
+  <div class="keymsg">
+    <div class="keymsg-txt">IPの価値は多方面に広がっている。　快閃店・原住民教育・音楽フェス・プロ野球——4つの場面がそれを証明する。</div>
+    <div class="keymsg-sub">巧虎キャラクターへの需要は衰えず、むしろ多様なシーンへ拡張している。2025〜26年にかけ、ポップアップストア・台湾16民族言語教育・台湾最大音楽フェス出演・プロ野球スタジアムイベントと、4つの異なる接点でブランド存在感を示した。</div>
+  </div>
+
+  <!-- ① 快閃店 -->
+  <div class="card" style="padding:0;overflow:hidden;margin-bottom:20px;">
+    <div style="position:relative;width:100%;padding-top:56.25%;overflow:hidden;background:#000;">
+      <img src="https://raw.githubusercontent.com/kazuyukikonuma/260424for-japanese-colleague/main/image_012.png" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:contain;" alt="巧虎快閃店 2026">
+    </div>
+    <div style="padding:20px 24px;">
+      <div class="ctitle">① 巧虎快閃店（FY26 8〜9月 実施予定）</div>
+      <div style="font-size:14px;font-weight:700;color:#1a1a1a;margin-bottom:8px;">「可愛巧虎島」ポップアップストア展開</div>
+      <div style="font-size:15px;color:#666;line-height:1.75;">FY26年度 8〜9月に百貨店・ショッピングモールへの期間限定出店を予定。限定グッズ販売とフォトスポットでファミリー層を集客し、巧虎IPの商品展開力を直接実証する場となる。</div>
+    </div>
+  </div>
+
+  <!-- ② 原住民族言語教育 -->
+  <div class="card" style="padding:0;overflow:hidden;margin-bottom:20px;">
+    <div style="position:relative;width:100%;padding-top:56.25%;overflow:hidden;background:#000;">
+      <img src="https://raw.githubusercontent.com/kazuyukikonuma/260424for-japanese-colleague/main/image_013.png" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:contain;" alt="族語童萌巧虎同行">
+    </div>
+    <div style="padding:20px 24px;">
+      <div class="ctitle">② 原住民族言語教育コラボ</div>
+      <div style="font-size:14px;font-weight:700;color:#1a1a1a;margin-bottom:8px;">台湾16民族の言語に巧虎アニメを翻訳</div>
+      <div style="font-size:15px;color:#666;line-height:1.75;">台湾政府の原住民族文化・言語保護政策を支援。「族語童萌★巧虎同行」として16民族語に吹き替えた教材を提供。社会的価値と公共機関との関係構築を実現した。</div>
+    </div>
+  </div>
+
+  <!-- ③ 大港開唱 -->
+  <div class="card" style="padding:0;overflow:hidden;margin-bottom:20px;">
+    <div style="position:relative;width:100%;padding-top:56.25%;overflow:hidden;background:#000;">
+      <img src="https://raw.githubusercontent.com/kazuyukikonuma/260424for-japanese-colleague/main/image_014.png" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:contain;" alt="大港開唱 巧虎LIVE">
+    </div>
+    <div style="padding:20px 24px;">
+      <div class="ctitle">③ 大港開唱（Megaport Festival）LIVE</div>
+      <div style="font-size:14px;font-weight:700;color:#1a1a1a;margin-bottom:8px;">台湾最大級野外音楽フェスに巧虎が出演、異例の大盛況</div>
+      <div style="font-size:15px;color:#666;line-height:1.75;">「大港開唱（Megaport Festival）」とは2006年から続く、南部最大都市高雄で開催される台湾最大規模にして最も象徴的な野外音楽フェスティバルです。毎年、国内外から数万人の音楽ファンが集まり、チケットは数分で完売。20周年を迎えた同フェスに巧虎が招待され、LIVEパフォーマンスを実施しました。</div>
+    </div>
+  </div>
+
+  <!-- ④ 野球 -->
+  <div class="card" style="padding:0;overflow:hidden;margin-bottom:20px;">
+    <div style="position:relative;width:100%;padding-top:56.25%;overflow:hidden;background:#000;">
+      <img src="https://raw.githubusercontent.com/kazuyukikonuma/260424for-japanese-colleague/main/image_015.png" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:contain;" alt="巧虎Sweet Land at CTBC Brothers">
+    </div>
+    <div style="padding:20px 24px;">
+      <div class="ctitle">④ CTBC Brothersコラボ（プロ野球）</div>
+      <div style="font-size:14px;font-weight:700;color:#1a1a1a;margin-bottom:8px;">「巧虎Sweet Land」スタジアムイベント</div>
+      <div style="font-size:15px;color:#666;line-height:1.75;">2025年4月、台湾プロ野球CTBC Brothers主催「巧虎Sweet Land」イベントを実施。スタジアムに巧虎・巧兔が登場し、ファミリー層から大きな反響を得た。キャラクターIPの価値は現在も高く、舞台劇・授権金事業の成長基盤となっている。</div>
+    </div>
+  </div>
+
+  <div style="text-align:center;margin-top:8px;">
+    <a href="https://www.youtube.com/watch?v=DJpP_a6dqIQ" target="_blank"
+       style="display:inline-flex;align-items:center;gap:10px;padding:14px 32px;background:#FF0000;color:#fff;border-radius:8px;text-decoration:none;font-weight:700;font-size:14px;letter-spacing:.04em;box-shadow:0 4px 12px rgba(255,0,0,0.3);">
+      <svg width="24" height="18" viewBox="0 0 24 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M23.498 2.818a3.016 3.016 0 0 0-2.122-2.136C19.505 0 12 0 12 0S4.495 0 2.624.682A3.016 3.016 0 0 0 .502 2.818C0 4.703 0 8.65 0 8.65s0 3.946.502 5.832a3.016 3.016 0 0 0 2.122 2.136C4.495 17.3 12 17.3 12 17.3s7.505 0 9.376-.682a3.016 3.016 0 0 0 2.122-2.136C24 12.596 24 8.65 24 8.65s0-3.947-.502-5.832z" fill="white"/>
+        <path d="M9.6 12.35l6.233-3.7L9.6 4.95v7.4z" fill="#FF0000"/>
+      </svg>
+      YouTubeで動画を見る — 巧虎Sweet Land at CTBC Brothers
+    </a>
+  </div>
+</div>
+<script>
+// 09 タグ数×購買率（リデザイン：30個閾値を強調）
+(function(){
+  // chartjs-plugin-annotationなしで閾値ラインを擬似的に実装
+  const labels=['1-5個','6-10個','11-20個','21-30個','31-50個'];
+  const data=[17.6,20.6,20.4,25.8,37.0];
+  const colors=['#e0e0e0','#e0e0e0','#e0e0e0','#e0e0e0','#1a1a1a'];
+  const ctx=document.getElementById('c-tag-cvr');
+  new Chart(ctx,{
+    type:'bar',
+    data:{
+      labels:labels,
+      datasets:[
+        {
+          label:'購買率(%)',
+          data:data,
+          backgroundColor:colors,
+          borderRadius:4,borderWidth:0,
+          barThickness:32
+        },
+        // 基準線（1-5個の17.6%）を折れ線で表示
+        {
+          type:'line',
+          label:'基準（1-5個）',
+          data:[17.6,17.6,17.6,17.6,17.6],
+          borderColor:'#A0B8D8',
+          borderWidth:1.5,
+          borderDash:[4,4],
+          pointRadius:0,
+          fill:false
+        }
+      ]
+    },
+    options:{
+      responsive:true,maintainAspectRatio:false,
+      plugins:{
+        legend:{display:false},
+        tooltip:{
+          callbacks:{
+            label:c=>{
+              if(c.datasetIndex===1) return null;
+              const base=17.6;
+              const ratio=(c.raw/base).toFixed(1);
+              return [`購買率: ${c.raw}%`, `基準比: ×${ratio}`];
+            }
+          }
+        }
+      },
+      scales:{
+        x:{grid:{display:false},ticks:{color:v=>v.index>=4?'#1a1a1a':'#999',font:{size:10}}},
+        y:{
+          grid:{color:'#e8e8e8'},
+          ticks:{callback:v=>v+'%',color:'#666',font:{size:10}},
+          min:0,max:45,
+          title:{display:true,text:'購買率（%）',font:{size:10},color:'#999'}
+        }
+      }
+    }
+  });
+})();
+
+// 09 購買確率スコア分布（未購買者）
+(function(){
+  new Chart('c-score-dist',{
+    type:'bar',
+    data:{
+      labels:['0-10%','10-20%','20-30%','30-40%','40-50%','50%+'],
+      datasets:[{
+        label:'人数',
+        data:[69222,46031,83985,15888,2494,460],
+        backgroundColor:['#E8F0FF','#C8D8EE','#A0B8D8','#4A7CC7','#2A4A7A','#1A3560'],
+        borderRadius:4,borderWidth:0
+      }]
+    },
+    options:{
+      responsive:true,maintainAspectRatio:false,
+      plugins:{
+        legend:{display:false},
+        tooltip:{callbacks:{label:c=>`${c.raw.toLocaleString()}人`}},
+        annotation:{}
+      },
+      scales:{
+        x:{grid:{display:false},ticks:{color:'#666',font:{size:10}}},
+        y:{
+          grid:{color:'#e8e8e8'},
+          ticks:{callback:v=>v>=1000?(v/1000).toFixed(0)+'K':v,color:'#666',font:{size:10}},
+          title:{display:true,text:'未購買者数',font:{size:10},color:'#999'}
+        }
+      }
+    }
+  });
+})();
+
+// 07 出生数グラフ
+const BYR=['2015','2016','2017','2018','2019','2020','2021','2022','2023','2024','2025','2026','2027','2028','2029','2030'];
+const BV=[213598,208573,193844,181601,177767,165249,153820,138986,135571,120,107812,100000,95000,90000,85000,82000];
+new Chart('c-birth',{type:'bar',data:{labels:BYR,datasets:[
+  {label:'実績',data:BV.map((v,i)=>i<=10?v:null),backgroundColor:AC_BLUE+'88',borderColor:AC_BLUE,borderWidth:1,borderRadius:3},
+  {label:'推計',data:BV.map((v,i)=>i>11?v:null),backgroundColor:AC_GREY+'44',borderColor:AC_GREY,borderWidth:1,borderRadius:3}
+]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'top',labels:{padding:14,boxWidth:12}}},scales:{x:{grid:{display:false}},y:{grid:{color:'#e8e8e8'},ticks:{callback:v=>(v/10000).toFixed(1)+'万'},title:{display:true,text:'出生数（人）',font:{size:10}}}}}});
+
+// 07 売上目標グラフ
+const FYL=['FY25','FY26','FY27','FY28','FY29','FY30'];
+const REV_OLD=[950,1195,1459,1741,2038,2380];
+const REV_NEW=[902,902,1037,1095,1154,1205];
+new Chart('c-target-rev',{type:'bar',data:{labels:FYL,datasets:[
+  {label:'前回FPP',data:REV_OLD,backgroundColor:AC_GREY+'88',borderRadius:3,borderWidth:0},
+  {label:'今回修正',data:REV_NEW,backgroundColor:AC_BLUE+'cc',borderRadius:3,borderWidth:0}
+]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'top',labels:{padding:12,boxWidth:10}}},scales:{x:{grid:{display:false}},y:{grid:{color:'#e8e8e8'},ticks:{callback:v=>v+'M'}}}}});
+
+// 07 EBITDA目標グラフ
+const EBI_OLD=[78,113,185,278,348,424];
+const EBI_NEW=[-13,5,8,27,54,78];
+new Chart('c-target-ebi',{type:'bar',data:{labels:FYL,datasets:[
+  {label:'前回FPP',data:EBI_OLD,backgroundColor:AC_GREY+'88',borderRadius:3,borderWidth:0},
+  {label:'今回修正',data:EBI_NEW,backgroundColor:EBI_NEW.map(v=>v>=0?AC_MINT+'cc':AC_ROSE+'cc'),borderRadius:3,borderWidth:0}
+]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'top',labels:{padding:12,boxWidth:10}}},scales:{x:{grid:{display:false}},y:{grid:{color:'#e8e8e8'},ticks:{callback:v=>v+'M'}}}}});
+
+// 08 LTV購買パターングラフ（元T9完全再現：平均LTV左軸＋客戶数右軸）
+new Chart('c-ltv-pattern',{
+  type:'bar',
+  data:{
+    labels:['僅學習\n商品','學習+\n周邊','僅周邊\n商品','學習+周邊\n+MF','僅\nMirafeel','學習\n+MF','學習+周邊\n+巧連智','周邊\n+MF'],
+    datasets:[
+      {label:'平均LTV（NTD）',
+       data:[4762,7181,1356,14520,4353,8357,12661,4540],
+       backgroundColor:'#A8C5DA',borderWidth:0,borderRadius:2,yAxisID:'y'},
+      {label:'客戶数（右軸）',
+       data:[7093,2746,2072,123,366,108,53,61],
+       backgroundColor:'rgba(197,180,227,0.5)',borderWidth:0,borderRadius:2,yAxisID:'y1'}
+    ]
+  },
+  options:{
+    responsive:true, maintainAspectRatio:false,
+    plugins:{
+      legend:{display:true,position:'top',labels:{font:{size:10},padding:8,boxWidth:10,color:'#6b6860'}},
+      tooltip:{callbacks:{label:ctx=>ctx.datasetIndex===0?`平均LTV: ${ctx.raw.toLocaleString()} NTD`:`客戶数: ${ctx.raw.toLocaleString()}人`}}
+    },
+    scales:{
+      x:{grid:{display:false}, ticks:{font:{size:9},color:'#9c9a94'}},
+      y:{grid:{color:'#e2dfd8'}, min:0, max:16000,
+         ticks:{callback:v=>v.toLocaleString(), font:{size:10}, color:'#4A7A9B'},
+         title:{display:true, text:'平均LTV（NTD）', font:{size:9}, color:'#4A7A9B'}},
+      y1:{position:'right', grid:{display:false},
+          ticks:{callback:v=>v>=1000?(v/1000).toFixed(0)+'K':v, font:{size:10}, color:'#7A5AAB'},
+          title:{display:true, text:'客戶数', font:{size:9}, color:'#7A5AAB'}}
+    }
+  }
+});
+
+// BCLビジュアライゼーション タブ切り替え
+function showBclTab(tab) {
+  ['db','acq'].forEach(function(t) {
+    const panel = document.getElementById('bcl-panel-'+t);
+    const btn   = document.getElementById('bcl-tab-'+t);
+    if (!panel || !btn) return;
+    if (t === tab) {
+      panel.style.display = 'block';
+      btn.style.background = '#5B9BD5'; btn.style.color = '#fff'; btn.style.borderColor = '#5B9BD5';
+      if (t === 'acq') initBclAcqCharts();
+    } else {
+      panel.style.display = 'none';
+      btn.style.background = '#f5f5f5'; btn.style.color = '#555'; btn.style.borderColor = '#e0e0e0';
+    }
+  });
+}
+
+// BCL DB現況：月齢ドーナツ
+(function(){
+  const seg7vals=[1603,3180,2687,10723,11630,42860,75666];
+  const seg7lbls=['A 孕期','S 0-6M','SS 7-12M','S 13-24M','AA 25-36M','A 37-60M','B 61M+'];
+  const seg7clrs=['#F5D4A0','#A8C5DA','#AED6F1','#B5EAD7','#B5EAD7','#FFF4A3','#D4C5B0'];
+  const total=seg7vals.reduce((a,v)=>a+v,0);
+  new Chart('c-bcl-age7-p08',{
+    type:'doughnut',
+    data:{labels:seg7lbls,datasets:[{data:seg7vals,backgroundColor:seg7clrs,borderWidth:1,borderColor:'#fff'}]},
+    options:{responsive:true,maintainAspectRatio:false,plugins:{
+      legend:{display:true,position:'right',labels:{font:{size:10},color:'#6b6860',padding:4,boxWidth:10}},
+      tooltip:{callbacks:{label:c=>`${c.label}: ${c.raw.toLocaleString()} (${(c.raw/total*100).toFixed(1)}%)`}}
+    }}
+  });
+})();
+
+function initBclAcqCharts() {
+  // 月次新規BCL登録数
+  if (!document.getElementById('c-bcl-new-p08')._chartInitialized) {
+    document.getElementById('c-bcl-new-p08')._chartInitialized = true;
+    const mLbl=['24/04','24/05','24/06','24/07','24/08','24/09','24/10','24/11','24/12','25/01','25/02','25/03','25/04','25/05','25/06','25/07','25/08','25/09','25/10','25/11','25/12','26/01','26/02','26/03'];
+    const mV=[111,153,131,194,1508,2639,1582,1700,623,660,871,1761,3664,868,981,1522,1160,1395,2014,1506,1900,1843,2131,4263];
+    const mI=[33,29,30,45,377,775,375,420,107,133,223,426,916,189,377,493,325,276,407,270,390,308,304,261];
+    new Chart('c-bcl-new-p08',{
+      type:'bar',
+      data:{labels:mLbl,datasets:[
+        {label:'有効会員',data:mV,backgroundColor:'#A8C5DA',stack:'s',borderWidth:0},
+        {label:'無効（封鎖）',data:mI,backgroundColor:'#F5A8A0',stack:'s',borderWidth:0}
+      ]},
+      options:{responsive:true,maintainAspectRatio:false,
+        scales:{
+          x:{stacked:true,grid:{display:false},ticks:{color:'#9c9a94',font:{size:9},maxRotation:0}},
+          y:{stacked:true,grid:{color:'#e2dfd8'},ticks:{color:'#9c9a94',font:{size:10},callback:v=>v>=1000?(v/1000).toFixed(0)+'K':v}}
+        },
+        plugins:{legend:{display:true,position:'top',labels:{font:{size:10},padding:8,boxWidth:10,color:'#6b6860'}}}}
+    });
+  }
+  // 月齢分布×月次
+  if (!document.getElementById('c-bcl-cross-p08')._chartInitialized) {
+    document.getElementById('c-bcl-cross-p08')._chartInitialized = true;
+    const mLbl2=['24/04','24/05','24/06','24/07','24/08','24/09','24/10','24/11','24/12','25/01','25/02','25/03','25/04','25/05','25/06','25/07','25/08','25/09','25/10','25/11','25/12','26/01','26/02','26/03'];
+    const mc={
+      preg:[4,6,12,12,395,455,280,316,72,43,34,68,238,143,170,339,281,221,297,312,513,577,620,565],
+      s06:[9,5,12,21,325,718,304,368,125,94,149,376,846,105,105,160,110,150,178,155,221,220,272,593],
+      ss712:[8,16,19,28,195,496,227,243,90,79,127,290,646,141,117,253,123,194,208,162,319,150,234,600],
+      s1324:[28,40,36,63,391,734,572,468,209,224,253,513,997,237,231,322,252,384,471,374,412,286,444,1037],
+      aa2536:[21,27,22,29,125,104,119,144,64,136,161,302,523,149,162,231,195,248,365,269,228,209,270,729],
+      a3760:[23,49,24,31,51,102,60,119,41,58,100,166,304,66,125,142,124,133,338,170,121,246,182,536],
+      b61p:[18,10,6,10,26,30,20,42,22,26,47,46,110,27,71,75,75,65,157,64,86,155,109,203]
+    };
+    const segLbls=['A 孕期','S 0-6M','SS 7-12M','S 13-24M','AA 25-36M','A 37-60M','B 61M+'];
+    const segClrs=['#F5D4A0','#A8C5DA','#AED6F1','#B5EAD7','#C5B4E3','#FFF4A3','#D4C5B0'];
+    const segKeys=['preg','s06','ss712','s1324','aa2536','a3760','b61p'];
+    new Chart('c-bcl-cross-p08',{
+      type:'bar',
+      data:{labels:mLbl2,datasets:segKeys.map((k,i)=>({
+        label:segLbls[i],data:mc[k],backgroundColor:segClrs[i],stack:'s',borderWidth:0
+      }))},
+      options:{responsive:true,maintainAspectRatio:false,
+        scales:{
+          x:{stacked:true,grid:{display:false},ticks:{color:'#9c9a94',font:{size:9},maxRotation:0}},
+          y:{stacked:true,grid:{color:'#e2dfd8'},ticks:{color:'#9c9a94',font:{size:10},callback:v=>v>=1000?(v/1000).toFixed(0)+'K':v}}
+        },
+        plugins:{legend:{display:true,position:'top',labels:{font:{size:9.5},padding:6,boxWidth:10,color:'#6b6860'}}}}
+    });
+  }
+}
+
+document.querySelectorAll('details').forEach(function(d) {
+  d.addEventListener('toggle', function() {
+    const icon = this.querySelector('[id$="-toggle-icon"]');
+    if(icon) icon.style.transform = this.open ? 'rotate(90deg)' : 'rotate(0deg)';
+  });
+});
+
+// 3期推移：売上高
+(function(){
+  const CL='#6EC4A7',CS='#F0CC6A',CI='#5B9BD5',CK='#BBBBBB',CF='#DDDDDD',CN='#1a1a1a';
+  const totals=[2884,1545,891];
+  new Chart('c-3yr-rev',{
+    type:'bar',
+    data:{
+      labels:['FY23','FY24','FY25'],
+      datasets:[
+        {label:'學習周邊',    data:[221,339,404],   backgroundColor:CL, stack:'s', borderWidth:0},
+        {label:'舞台劇',      data:[307,321,282],   backgroundColor:CS, stack:'s', borderWidth:0},
+        {label:'IPライセンス',data:[150,118,135],   backgroundColor:CI, stack:'s', borderWidth:0},
+        {label:'講座',        data:[2148,686,0],    backgroundColor:CK, stack:'s', borderWidth:0},
+        {label:'為替差',      data:[58,81,70],      backgroundColor:CF, stack:'s', borderWidth:0},
+        {label:'合計',        data:totals, type:'line', yAxisID:'y',
+         borderColor:CN, backgroundColor:'transparent', borderWidth:2.5,
+         pointRadius:6, pointBackgroundColor:CN, pointBorderColor:'#fff', pointBorderWidth:2, tension:0, order:0}
+      ]
+    },
+    options:{
+      responsive:true, maintainAspectRatio:false,
+      plugins:{
+        legend:{position:'bottom', labels:{padding:10, boxWidth:10, font:{size:10}}},
+        tooltip:{mode:'index'}
+      },
+      scales:{
+        x:{grid:{display:false}, stacked:true},
+        y:{grid:{color:'#e8e8e8'}, stacked:true, min:0, max:3200,
+           ticks:{callback:v=>v.toLocaleString()+'M', font:{size:10}}}
+      }
+    }
+  });
+})();
+
+// 3期推移：EBITDA
+(function(){
+  const CL='#6EC4A7',CS='#F0CC6A',CI='#5B9BD5',CK='#BBBBBB',CC='#F4A46A',CF='#DDDDDD',CN='#1a1a1a';
+  const totals=[-82,35,-8];
+  new Chart('c-3yr-ebi',{
+    type:'bar',
+    data:{
+      labels:['FY23','FY24','FY25'],
+      datasets:[
+        {label:'學習周邊',    data:[159,123,144],   backgroundColor:CL,      stack:'s', borderWidth:0},
+        {label:'舞台劇',      data:[119,139,125],   backgroundColor:CS,      stack:'s', borderWidth:0},
+        {label:'IPライセンス',data:[14,101,97],     backgroundColor:CI,      stack:'s', borderWidth:0},
+        {label:'講座',        data:[567,196,0],     backgroundColor:CK,      stack:'s', borderWidth:0},
+        {label:'共通（費用）',data:[-981,-556,-406], backgroundColor:CC+'bb', stack:'s', borderWidth:0},
+        {label:'為替差',      data:[40,32,19],      backgroundColor:CF,      stack:'s', borderWidth:0},
+        {label:'合計',        data:totals, type:'line', yAxisID:'y',
+         borderColor:CN, backgroundColor:'transparent', borderWidth:2.5,
+         pointRadius:6, pointBackgroundColor:totals.map(v=>v<0?'#c0392b':CN),
+         pointBorderColor:'#fff', pointBorderWidth:2, tension:0, order:0}
+      ]
+    },
+    options:{
+      responsive:true, maintainAspectRatio:false,
+      plugins:{
+        legend:{position:'bottom', labels:{padding:10, boxWidth:10, font:{size:10}}},
+        tooltip:{mode:'index'}
+      },
+      scales:{
+        x:{grid:{display:false}, stacked:true},
+        y:{grid:{color:'#e8e8e8'}, stacked:true, min:-1100, max:1000,
+           ticks:{callback:v=>v.toLocaleString()+'M', font:{size:10}}}
+      }
+    }
+  });
+})();
+</script>
+</body>
+</html>

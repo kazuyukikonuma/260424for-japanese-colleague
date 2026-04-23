@@ -1596,10 +1596,10 @@ new Chart('c-bcl-rt',{type:'doughnut',data:{labels:['全管道（旧巧連智）
 
 // 07 出生数グラフ
 const BYR=['2015','2016','2017','2018','2019','2020','2021','2022','2023','2024','2025','2026','2027','2028','2029','2030'];
-const BV=[213598,208573,193844,181601,177767,165249,153820,138986,135571,120,107812,100000,95000,90000,85000,82000];
+const BV=[213598,208573,193844,181601,177767,165249,153820,138986,135571,134856,107812,100000,95000,90000,85000,82000];
 new Chart('c-birth',{type:'bar',data:{labels:BYR,datasets:[
   {label:'実績',data:BV.map((v,i)=>i<=10?v:null),backgroundColor:AC_BLUE+'88',borderColor:AC_BLUE,borderWidth:1,borderRadius:3},
-  {label:'推計',data:BV.map((v,i)=>i>11?v:null),backgroundColor:AC_GREY+'44',borderColor:AC_GREY,borderWidth:1,borderRadius:3}
+  {label:'推計',data:BV.map((v,i)=>i>=11?v:null),backgroundColor:AC_GREY+'44',borderColor:AC_GREY,borderWidth:1,borderRadius:3}
 ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'top',labels:{padding:14,boxWidth:12}}},scales:{x:{grid:{display:false}},y:{grid:{color:'#e8e8e8'},ticks:{callback:v=>(v/10000).toFixed(1)+'万'},title:{display:true,text:'出生数（人）',font:{size:10}}}}}});
 
 // 07 売上目標グラフ
